@@ -14,7 +14,7 @@ export function Experience({ mode }: ExperienceProps) {
   const locationClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-600';
   
   return (
-    <section className="max-w-3xl mx-auto py-16">
+    <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">
       <h2 className={`text-3xl font-serif mb-6 transition-colors ${titleClass}`}>
         Experience
       </h2>

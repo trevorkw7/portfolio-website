@@ -14,7 +14,7 @@ export function Projects({ mode }: ProjectsProps) {
   const linkClass = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800';
   
   return (
-    <section className="max-w-3xl mx-auto py-16">
+    <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">
       <h2 className={`text-3xl font-serif mb-6 transition-colors ${titleClass}`}>
         Projects
       </h2>

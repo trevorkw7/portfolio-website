@@ -156,18 +156,21 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
     };
 
     // Clear trails with a smooth fade animation
-    const clearCanvas = () => {
+    const clearCanvas = (fastFade = false) => {
       if (lineSegments.current.length === 0) return;
 
       // Start the fade animation
       let fadeStep = 0;
-      const FADE_STEPS = 15;
+      // Use fewer steps and faster interval for scroll-triggered fades
+      const FADE_STEPS = fastFade ? 5 : 15;
+      const FADE_INTERVAL = fastFade ? 15 : 30;
+      
       const fadeInterval = setInterval(() => {
         fadeStep++;
 
-        // Reduce opacity of all line segments
+        // Reduce opacity of all line segments (faster reduction for scroll-triggered fades)
         lineSegments.current.forEach((segment) => {
-          segment.opacity = Math.max(0, segment.opacity - 1 / FADE_STEPS);
+          segment.opacity = Math.max(0, segment.opacity - (fastFade ? 3 : 1) / FADE_STEPS);
         });
 
         // Redraw all lines with updated opacity
@@ -188,7 +191,7 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
           prevPos.current = { x: undefined, y: undefined };
           curPos.current = { x: undefined, y: undefined };
         }
-      }, 30);
+      }, FADE_INTERVAL);
     };
 
     // Store the clear function in the ref so it can be called from outside
@@ -423,15 +426,15 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
       // Update current scroll position
       currentScrollY.current = window.scrollY;
 
-      // Clear trails when scrolling
+      // Clear trails when scrolling with fast fade
       if (!isClearing.current) {
         isClearing.current = true;
-        clearCanvas();
+        clearCanvas(true); // Use fast fade for scroll-triggered clearing
 
         registerTimer(
           window.setTimeout(() => {
             isClearing.current = false;
-          }, 100)
+          }, 50) // Shorter reset time for scroll clearing
         );
       }
 

@@ -17,25 +17,21 @@ export function AnimatedBackground({ mode }: AnimatedBackgroundProps) {
     }>
   >([]);
 
-  // Generate circles only on client-side to avoid hydration errors
+  // Generate circles only once on client-side to avoid hydration errors and ensure smooth transitions
   useEffect(() => {
-    setCircles(
-      Array.from({ length: 8 }).map((_, i) => ({
-        id: i,
-        x: `${5 + i * 12}%`,
-        y: `${15 + (i % 3) * 25}%`,
-        size:
-          mode === "light"
-            ? 250 + Math.random() * 250
-            : 200 + Math.random() * 200,
-        opacity:
-          mode === "light"
-            ? 0.25 + Math.random() * 0.25
-            : 0.1 + Math.random() * 0.2,
-        speed: 15 + Math.random() * 10,
-      }))
-    );
-  }, [mode]);
+    if (circles.length === 0) {
+      setCircles(
+        Array.from({ length: 8 }).map((_, i) => ({
+          id: i,
+          x: `${5 + i * 12}%`,
+          y: `${15 + (i % 3) * 25}%`,
+          size: 225 + Math.random() * 225, // Use consistent size range
+          opacity: 0.15 + Math.random() * 0.2, // Use consistent opacity range
+          speed: 15 + Math.random() * 10,
+        }))
+      );
+    }
+  }, [circles.length]);
 
   // Define colors for bokeh circles based on mode
   const darkBokehColor = "rgb(147, 197, 253)"; // bg-blue-300 equivalent
@@ -71,10 +67,11 @@ export function AnimatedBackground({ mode }: AnimatedBackgroundProps) {
             marginTop: -c.size / 2,
             filter: mode === "light" ? "blur(100px)" : "blur(80px)",
             backgroundColor: mode === "dark" ? darkBokehColor : lightBokehColor,
-            transition: `background-color ${modeTransition.duration}s ${modeTransition.ease.join(", ")}`,
+            opacity: mode === "light" ? c.opacity * 1.5 : c.opacity,
+            transition: `all ${modeTransition.duration}s ${modeTransition.ease.join(", ")}`,
           }}
           animate={{
-            opacity: [c.opacity, c.opacity * 1.5, c.opacity],
+            scale: [1, 1.05, 1], // Use scale animation instead of opacity
           }}
           transition={{
             duration: c.speed,

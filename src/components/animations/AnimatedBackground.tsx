@@ -70,18 +70,18 @@ export function AnimatedBackground({ mode }: AnimatedBackgroundProps) {
             marginLeft: -c.size / 2,
             marginTop: -c.size / 2,
             filter: mode === "light" ? "blur(100px)" : "blur(80px)",
+            backgroundColor: mode === "dark" ? darkBokehColor : lightBokehColor,
+            transition: `background-color ${modeTransition.duration}s ${modeTransition.ease.join(", ")}`,
           }}
           animate={{
             opacity: [c.opacity, c.opacity * 1.5, c.opacity],
-            backgroundColor: mode === "dark" ? darkBokehColor : lightBokehColor,
           }}
           transition={{
             duration: c.speed,
             repeat: Infinity,
             ease: "easeInOut",
-            backgroundColor: modeTransition,
           }}
-        />
+        />  
       ))}
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] bg-repeat opacity-10 pointer-events-none" />
     </div>

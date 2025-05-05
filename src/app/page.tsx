@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 
 // Define the window interface extension for the clearMouseTrail method
@@ -31,11 +31,16 @@ export default function Home() {
   const textClass = mode === "dark" ? "text-white" : "text-gray-900";
   const bgColor = mode === "dark" ? "#000000" : "#ffffff";
 
-  // Define a consistent transition for all mode changes
-  const modeTransition = {
-    duration: 0.8,
-    ease: [0.16, 1, 0.3, 1], // Custom bezier curve for Apple-like smoothness
-  };
+  // Define a responsive transition for mode changes - faster on mobile
+  const modeTransition = useMemo(() => {
+    // Check if we're on mobile
+    const isMobile = isClient && window.innerWidth < 768;
+    
+    return {
+      duration: isMobile ? 0.4 : 0.8, // Faster transition on mobile
+      ease: [0.16, 1, 0.3, 1], // Custom bezier curve for Apple-like smoothness
+    };
+  }, [isClient]);
 
   return (
     <motion.div

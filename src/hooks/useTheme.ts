@@ -1,46 +1,54 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 type Theme = 'dark' | 'light';
 
+// Create a singleton for theme state to avoid redundant calculations
+let cachedTheme: Theme | null = null;
+let themeInitialized = false;
+
 export function useTheme() {
   // Always start with 'dark' on the server to avoid hydration mismatch
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [theme, setInternalTheme] = useState<Theme>(cachedTheme || 'dark');
 
-  // Initialize theme from localStorage or system preference
-  useEffect(() => {
-    // Skip if already initialized
-    if (isInitialized) return;
-
-    // Check localStorage first
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      setIsInitialized(true);
-      return;
+  // Memoized theme setter to avoid recreating on each render
+  const setTheme = useCallback((newTheme: Theme) => {
+    cachedTheme = newTheme;
+    setInternalTheme(newTheme);
+    // Update localStorage immediately to avoid delays
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', newTheme);
     }
-    
-    // If no saved preference, check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-    
-    setIsInitialized(true);
-  }, [isInitialized]);
+  }, []);
 
-  // Update localStorage when theme changes, but only after initialization
+  // Initialize theme only once on client-side
   useEffect(() => {
-    if (!isInitialized) return;
-    localStorage.setItem('theme', theme);
-  }, [theme, isInitialized]);
+    if (typeof window === 'undefined' || themeInitialized) return;
+    
+    // Function to determine initial theme
+    const initializeTheme = () => {
+      // Check localStorage first
+      const savedTheme = localStorage.getItem('theme') as Theme;
+      if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
+        setTheme(savedTheme);
+        return;
+      }
+      
+      // If no saved preference, check system preference
+      const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
+    };
 
-  // Listen for system preference changes
+    // Use requestAnimationFrame for better performance
+    requestAnimationFrame(() => {
+      initializeTheme();
+      themeInitialized = true;
+    });
+  }, [setTheme]);
+
+  // Listen for system preference changes - only if no user preference
   useEffect(() => {
-    if (!isInitialized) return;
-
-    // Only apply system preference if no user preference is stored
+    if (typeof window === 'undefined') return;
+    
     const hasStoredPreference = localStorage.getItem('theme') !== null;
     if (hasStoredPreference) return;
 
@@ -57,7 +65,7 @@ export function useTheme() {
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
     };
-  }, [isInitialized]);
+  }, [setTheme]);
 
   return { theme, setTheme };
 }

@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 interface MouseTrailProps {
   activeArea?: number;
   mode: "dark" | "light";
-  trailDuration?: number; // Duration in millxnconds before trail fades out
+  trailDuration?: number; // Duration in milliseconds before trail fades out
 }
 
 export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
@@ -70,10 +70,9 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
     };
   }, []);
 
-  // First effect to handle client-side mounting
   useEffect(() => {
     setIsMounted(true);
-    return () => {}; // Clean up function
+    return () => {}; 
   }, []);
 
   // Main effect for trail rendering - only runs when component is mounted

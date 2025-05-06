@@ -11,7 +11,7 @@ export function Publications({ mode }: PublicationsProps) {
   const authorClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-700';
   const conferenceClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-700';
   const dateClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-500';
-  const linkClass = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800';
+  const linkClass = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
   
   // Border color based on mode
   const borderClass = mode === 'dark' ? 'border-gray-700' : 'border-gray-200';

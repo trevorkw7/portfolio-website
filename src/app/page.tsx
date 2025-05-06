@@ -69,7 +69,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className={`mt-4 text-lg drop-shadow-sm ${textClass}`}
           >
-            software engineer · roboticist · photographer
+            software engineer · robotics researcher · photographer
           </motion.p>
           <motion.div
             onClick={() => setMode(mode === "dark" ? "light" : "dark")}

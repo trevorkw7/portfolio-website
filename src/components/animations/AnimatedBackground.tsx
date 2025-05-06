@@ -86,6 +86,8 @@ export function AnimatedBackground({ mode }: AnimatedBackgroundProps) {
   
   // Use lazy initialization for circles state
   const [circles, setCircles] = useState<CircleType[]>([]);
+  // State to track if the client is desktop size, defaults to false for SSR
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Generate circles only once on client-side
   useEffect(() => {
@@ -98,6 +100,18 @@ export function AnimatedBackground({ mode }: AnimatedBackgroundProps) {
       return () => clearTimeout(timer);
     }
   }, [circles.length]);
+
+  // Effect to check window size after mount
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    // Check on mount
+    checkDesktop();
+    // Optional: Add resize listener if needed
+    // window.addEventListener('resize', checkDesktop);
+    // return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   // Memoize colors and transitions to prevent recalculations
   const colors = useMemo(() => ({
@@ -140,8 +154,8 @@ export function AnimatedBackground({ mode }: AnimatedBackgroundProps) {
           transitionEase={modeTransition.ease}
         />
       ))}
-      {/* Conditionally render texture only when not on mobile for better performance */}
-      {typeof window !== 'undefined' && window.innerWidth >= 768 && (
+      {/* Conditionally render texture based on isDesktop state */}
+      {isDesktop && (
         <div className="absolute inset-0 bg-[url('/paper-texture.png')] bg-repeat opacity-10 pointer-events-none" />
       )}
     </div>

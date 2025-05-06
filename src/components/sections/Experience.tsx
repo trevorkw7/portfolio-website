@@ -16,12 +16,6 @@ export function Experience({ mode }: ExperienceProps) {
   const locationClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-600';
   const linkIconColor = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
 
-  // Animation variants for the link icon
-  const linkIconVariants = {
-    rest: { opacity: 0, y: 5, transition: { duration: 0.2, ease: 'easeOut' } },
-    hover: { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeIn' } }
-  };
-  
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">
       <h2 className={`text-3xl font-serif mb-6 transition-colors ${titleClass}`}>
@@ -30,14 +24,11 @@ export function Experience({ mode }: ExperienceProps) {
       <div className="space-y-8">
         {resume.experience.map((exp, i) => {
           return (
-            <motion.div
+            <div 
               key={i}
-              className="relative group" 
-              initial="rest"
-              whileHover="hover"
-              animate="rest"
+              className="relative" 
             >
-              <h3 className={`text-xl font-semibold transition-colors ${subtitleClass} pr-6`}> 
+              <h3 className={`text-xl font-semibold transition-colors ${subtitleClass} pr-6`}>
                 {exp.title}
                 {/* Conditionally render based on exp.link */}
                 {exp.link && (
@@ -46,8 +37,15 @@ export function Experience({ mode }: ExperienceProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`absolute top-1 right-0 ${linkIconColor}`}
-                    variants={linkIconVariants}
                     aria-label={`Visit ${exp.title.split(',')[0]} website`} 
+                    initial={{ opacity: 0, y: 5 }} 
+                    whileInView={{ 
+                      opacity: 1, 
+                      y: 0, 
+                      transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } 
+                    }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.1 } }} 
+                    viewport={{ once: true, amount: 0.5 }} 
                   >
                     <ArrowUpRightIcon className="h-5 w-5" />
                   </motion.a>
@@ -70,7 +68,7 @@ export function Experience({ mode }: ExperienceProps) {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           );
         })}
       </div>

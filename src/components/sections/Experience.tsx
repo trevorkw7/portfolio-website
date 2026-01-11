@@ -10,7 +10,7 @@ interface ExperienceProps {
 // Helper function to parse markdown-style links in text
 function parseTextWithLinks(text: string, mode: 'dark' | 'light') {
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-  const parts: (string | JSX.Element)[] = [];
+  const parts: (string | React.ReactElement)[] = [];
   let lastIndex = 0;
   let match;
 

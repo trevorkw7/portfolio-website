@@ -36,7 +36,7 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
 
   // Store all line segments for smooth fading
   const lineSegments = useRef<
-    { x1: number; y1: number; x2: number; y2: number; opacity: number }[]
+    { x1: number; y1: number; x2: number; y2: number; opacity: number; mode: 'dark' | 'light' }[]
   >([]);
 
   // Use direct refs for current and previous positions
@@ -90,8 +90,6 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
     if (!ctx) return;
 
     // Trail rendering constants
-    const LINE_COLOR =
-      mode === "dark" ? "rgba(238, 238, 238, 1)" : "rgba(51, 51, 51, 1)";
     const LINE_WIDTH = 0.8;
     const MIN_LENGTH = 45; // Minimum distance to draw a line
     const AUTO_CLEAR_TIMEOUT = 10000; // Auto-clear trails after 10 seconds
@@ -140,7 +138,7 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
       lineSegments.current.forEach((segment) => {
         // Use consistent color values with segment opacity
         const color =
-          mode === "dark"
+          segment.mode === "dark"
             ? `rgba(238, 238, 238, ${segment.opacity})`
             : `rgba(51, 51, 51, ${segment.opacity})`;
         ctx.strokeStyle = color;
@@ -248,7 +246,7 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
 
         if (dist > MIN_LENGTH) {
           // Set line style
-          ctx.strokeStyle = LINE_COLOR;
+          ctx.strokeStyle = mode === "dark" ? "rgba(238, 238, 238, 1)" : "rgba(51, 51, 51, 1)";
           ctx.lineWidth = LINE_WIDTH;
           ctx.lineCap = "butt";
 
@@ -268,6 +266,7 @@ export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
             x2: curPos.current.x,
             y2: curPos.current.y,
             opacity: lineOpacity,
+            mode: mode,
           });
 
           // Update previous position

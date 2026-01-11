@@ -1,13 +1,8 @@
 export const resume = {
   about:
-    "I'm Trevor — a computer engineering graduate specializing in intelligent systems, robotics, and controls. Currently contributing to cutting-edge marine robotics research at Scripps Institution of Oceanography and preparing to join Typeface as a Software Engineering Intern.",
-  
+    "I'm Trevor, a software engineer working at the intersection of real-time systems, automation, and robotics. At Amazon, I work on player UX, playback runtime components, and end-to-end automation orchestration for the Prime Video Android client. Previously, I built LLM-orchestrated ad generation and rendering pipelines at Typeface and led and published field-deployed autonomy research on energy-efficient planning for autonomous underwater vehicles at Scripps Institution of Oceanography (IEEE OCEANS 2024).",
+
   education: [
-    {
-      institution: "University of California, San Diego",
-      degree: "M.S. Electrical and Computer Engineering (Intelligent Systems, Robotics and Controls)",
-      date: "Mar. 2025 – Mar. 2026"
-    },
     {
       institution: "University of California, San Diego",
       degree: "B.S. Computer Engineering",
@@ -18,13 +13,23 @@ export const resume = {
   
   experience: [
     {
-      title: "Incoming Software Engineering Intern, Typeface",
+      title: "Software Development Engineer – Prime Video, Amazon",
+      location: "Seattle, WA",
+      date: "Aug 2025 – Present",
+      details: [
+        "Developing video player features for Prime Video on Android and Fire TV devices"
+      ],
+    },
+    {
+      title: "Software Engineering Intern, Typeface",
       location: "Seattle, WA",
       date: "Jun 2025 – Sep 2025",
       details: [
-        "Set to join the Arc Ads team to develop agentic and generative AI systems using TypeScript, React, and Python", 
-        "Focus on building scalable, real-time inference pipelines"
+        "Worked across Ads team's full stack (TypeScript, React, Python, LangChain) building agentic AI ad pipeline from chat prompts through generative models (DALL-E 2, GPT) to platform-specific rendering for Meta and Google ads — serving major enterprise clients including Coca-Cola, Albertsons, Microsoft, and Asics",
+        "Owned end-to-end Rich Layout Previews as pipeline endpoint, converting AI-generated content into platform-accurate visual previews across 5 ad formats (Meta Single Image, Carousel, Collection + Google Display, Search) with real-time editing in infinite canvas",
+        "Resolved major launch blockers for [Spaces](https://www.typeface.ai/product/spaces), Typeface's transition from UI-based workflows to chat-native collaborative canvas, implementing driver-based preview architecture with live editing and variant swapping that reduced malformed requests and streamlined agent-driven content creation"
       ],
+      link: 'https://www.typeface.ai/product/spaces'
     },
     {
       title: "Robotics Researcher – Embedded Systems & Control, Scripps Institution of Oceanography",

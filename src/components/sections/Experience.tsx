@@ -7,6 +7,47 @@ interface ExperienceProps {
   mode: 'dark' | 'light';
 }
 
+// Helper function to parse markdown-style links in text
+function parseTextWithLinks(text: string, mode: 'dark' | 'light') {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: (string | JSX.Element)[] = [];
+  let lastIndex = 0;
+  let match;
+
+  const linkClass = mode === 'dark'
+    ? 'text-blue-400 hover:text-blue-300 underline'
+    : 'text-green-600 hover:text-green-800 underline';
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+
+    // Add the link
+    parts.push(
+      <a
+        key={match.index}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClass}
+      >
+        {match[1]}
+      </a>
+    );
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
+
 export function Experience({ mode }: ExperienceProps) {
   // Define text classes based on mode
   const titleClass = mode === 'dark' ? 'text-white' : 'text-gray-900';
@@ -64,7 +105,7 @@ export function Experience({ mode }: ExperienceProps) {
               <ul className="list-disc list-inside mt-2">
                 {exp.details.map((d, j) => (
                   <li key={j} className={`transition-colors ${detailClass}`}>
-                    {d}
+                    {parseTextWithLinks(d, mode)}
                   </li>
                 ))}
               </ul>

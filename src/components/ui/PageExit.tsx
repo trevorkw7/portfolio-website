@@ -2,14 +2,13 @@
 
 import { useEffect } from "react";
 
-const PAPER = "#fcfcfa"; // the research write-ups' background
 const EXIT_MS = 260;
 
 /**
- * Links from the home page into the research write-ups fade the page to the
- * write-up's paper colour before navigating, so the black hero never cuts
- * straight to a light page. Doing this ourselves, rather than relying on a
- * browser snapshot, keeps it smooth from the animated hero too.
+ * Links from the home page into the research write-ups fade the page to its
+ * own background before navigating, then the write-up brings its paper up
+ * from that colour (see research/.../arrive.js). Leaving a dark page by
+ * going dark, and letting the light page ease in, avoids a white flash.
  */
 export function PageExit() {
   useEffect(() => {
@@ -25,10 +24,14 @@ export function PageExit() {
       if (!href.startsWith("/research/") || reduced) return;
 
       e.preventDefault();
+      const color = document.documentElement.style.background || "#000000";
+      try {
+        sessionStorage.setItem("arrive-from", color);
+      } catch {}
       veil = document.createElement("div");
       veil.style.cssText =
         `position:fixed;inset:0;z-index:2147483647;pointer-events:none;` +
-        `background:${PAPER};opacity:0;transition:opacity ${EXIT_MS}ms cubic-bezier(.4,0,.2,1)`;
+        `background:${color};opacity:0;transition:opacity ${EXIT_MS}ms cubic-bezier(.4,0,.2,1)`;
       document.body.appendChild(veil);
       // Commit the transparent starting state first, or the fade is skipped.
       void veil.offsetWidth;

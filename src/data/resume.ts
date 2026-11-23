@@ -105,7 +105,7 @@ export const resume = {
   research: [
     {
       title: "What is the right interface layer for an LLM to control a robot?",
-      summary: "Where should the seam between a general model and deterministic robotics software sit? Given two webcams and raw joint control of a $200 SO-101 arm, with no demonstrations, learned skills or IK solver, Claude Fable 5.2 placed a film carton within 15 mm of an unmarked target in every paired run, working out the camera projection in its own reasoning. Adding a Python interpreter did not make it more accurate. It made it more repeatable, 24% faster and 13% cheaper, because the model wrote its own inverse kinematics in code.",
+      summary: "Testing raw 5-DOF joint control, with and without a Python interpreter, on a $200 SO-101 arm.",
       venue: "Self-published field study, 2026",
       link: "/research/llm-robot-interface/",
       image: "/research/llm-robot-interface/assets/fuji-over-tray.jpg",

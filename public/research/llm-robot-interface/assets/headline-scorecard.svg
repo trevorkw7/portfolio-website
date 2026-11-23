@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 260" width="820" height="260" role="img" aria-label="Headline benchmark comparison: Pass rate, Mean center error, Episode time, and API cost per run">
+  <rect width="820" height="260" fill="#fcfcfa"/>
+  <text x="24" y="30" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15.5" font-weight="600" fill="#1d2420">Direct joint control vs. + Python interpreter</text>
+  <rect x="536" y="19" width="11" height="11" rx="2" fill="#7c8d84"/>
+  <text x="553" y="29" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">Tools only</text>
+  <rect x="634" y="19" width="11" height="11" rx="2" fill="#215a49"/>
+  <text x="651" y="29" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="600" fill="#215a49">Tools + Python</text>
+  <line x1="24" y1="44" x2="796" y2="44" stroke="#d7ded8" stroke-width="1"/>
+  <g transform="translate(24, 0)">
+    <text x="6" y="66" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">Pass rate</text>
+    <text x="6" y="82" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#53605a">11 paired runs</text>
+    <line x1="12" y1="200" x2="174" y2="200" stroke="#b9c6be" stroke-width="1"/>
+    <rect x="34" y="114.8" width="46" height="85.2" rx="3" fill="#7c8d84"/>
+    <text x="57.0" y="108.8" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="500" fill="#1d2420">100%</text>
+    <text x="57.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#53605a">Tools</text>
+    <rect x="104" y="114.8" width="46" height="85.2" rx="3" fill="#215a49"/>
+    <text x="127.0" y="108.8" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="600" fill="#215a49">100%</text>
+    <text x="127.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="600" fill="#215a49">+ Python</text>
+    <text x="93.0" y="238" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#53605a">11/11 both</text>
+  </g>
+  <g transform="translate(222, 0)">
+    <line x1="-6" y1="54" x2="-6" y2="244" stroke="#e8ede9" stroke-width="1"/>
+    <text x="6" y="66" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">Mean center error</text>
+    <text x="6" y="82" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#53605a">11 pairs · lower is better</text>
+    <line x1="12" y1="200" x2="174" y2="200" stroke="#b9c6be" stroke-width="1"/>
+    <line x1="12" y1="102.0" x2="174" y2="102.0" stroke="#b45309" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="174" y="98.0" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.5" fill="#b45309">15 mm limit</text>
+    <rect x="34" y="163.0" width="46" height="37.0" rx="3" fill="#7c8d84"/>
+    <text x="57.0" y="157.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="500" fill="#1d2420">5.67 mm</text>
+    <text x="57.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#53605a">Tools</text>
+    <rect x="104" y="153.1" width="46" height="46.9" rx="3" fill="#215a49"/>
+    <text x="127.0" y="147.1" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="600" fill="#215a49">7.18 mm</text>
+    <text x="127.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="600" fill="#215a49">+ Python</text>
+    <text x="93.0" y="238" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#53605a">+1.51 mm</text>
+  </g>
+  <g transform="translate(420, 0)">
+    <line x1="-6" y1="54" x2="-6" y2="244" stroke="#e8ede9" stroke-width="1"/>
+    <text x="6" y="66" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">Episode time</text>
+    <text x="6" y="82" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#53605a">11 pairs · lower is better</text>
+    <line x1="12" y1="200" x2="174" y2="200" stroke="#b9c6be" stroke-width="1"/>
+    <rect x="34" y="116.8" width="46" height="83.2" rx="3" fill="#7c8d84"/>
+    <text x="57.0" y="110.8" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="500" fill="#1d2420">10.61 min</text>
+    <text x="57.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#53605a">Tools</text>
+    <rect x="104" y="137.1" width="46" height="62.9" rx="3" fill="#215a49"/>
+    <text x="127.0" y="131.1" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="600" fill="#215a49">8.02 min</text>
+    <text x="127.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="600" fill="#215a49">+ Python</text>
+    <text x="93.0" y="238" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#215a49">−24% (−2.6 min)</text>
+  </g>
+  <g transform="translate(618, 0)">
+    <line x1="-6" y1="54" x2="-6" y2="244" stroke="#e8ede9" stroke-width="1"/>
+    <text x="6" y="66" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">API cost per run</text>
+    <text x="6" y="82" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#53605a">11 pairs · lower is better</text>
+    <line x1="12" y1="200" x2="174" y2="200" stroke="#b9c6be" stroke-width="1"/>
+    <rect x="34" y="121.2" width="46" height="78.8" rx="3" fill="#7c8d84"/>
+    <text x="57.0" y="115.2" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="500" fill="#1d2420">$4.02</text>
+    <text x="57.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#53605a">Tools</text>
+    <rect x="104" y="131.2" width="46" height="68.8" rx="3" fill="#215a49"/>
+    <text x="127.0" y="125.2" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="600" fill="#215a49">$3.51</text>
+    <text x="127.0" y="215" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="600" fill="#215a49">+ Python</text>
+    <text x="93.0" y="238" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#215a49">−13% (−$0.51)</text>
+  </g>
+</svg>

@@ -16,7 +16,7 @@ function parseTextWithLinks(text: string, mode: 'dark' | 'light') {
 
   const linkClass = mode === 'dark'
     ? 'text-blue-400 hover:text-blue-300 underline'
-    : 'text-green-600 hover:text-green-800 underline';
+    : 'text-[#215a49] hover:text-[#163b2f] underline';
 
   while ((match = linkRegex.exec(text)) !== null) {
     // Add text before the link
@@ -55,7 +55,7 @@ export function Experience({ mode }: ExperienceProps) {
   const detailClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-700';
   const dateClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-500';
   const locationClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-600';
-  const linkIconColor = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
+  const linkIconColor = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-[#215a49] hover:text-[#163b2f]';
 
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">

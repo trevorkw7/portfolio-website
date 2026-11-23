@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 410" width="820" height="410" role="img" aria-label="Precision versus accuracy across tray targets G1, G2, and G3">
+  <defs>
+    <marker id="ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#b45309"/>
+    </marker>
+  </defs>
+  <rect width="820" height="410" fill="#fcfcfa"/>
+  <text x="24" y="29" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15.5" font-weight="600" fill="#1d2420">Precision vs. accuracy across tray targets (all 11 paired runs)</text>
+  <text x="24" y="48" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">Left: true-scale tray map (+x left, toward far side). Right: 2.5× zoomed 15 mm bullseyes for G2 and G3.</text>
+  <polygon points="568,21 573,26 568,31 563,26" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <text x="580" y="30" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#5a4b5e">Tools only</text>
+  <circle cx="662" cy="26" r="4" fill="#215a49"/>
+  <text x="673" y="30" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="600" fill="#215a49">With Python</text>
+  <line x1="24" y1="62" x2="796" y2="62" stroke="#d7ded8" stroke-width="1"/>
+  <rect x="37.9" y="109.9" width="373.0" height="227.9" rx="8" fill="#f2f4f0" stroke="#a6b3aa" stroke-width="1.5"/>
+  <text x="49.9" y="129.9" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.5" fill="#53605a">SHALLOW TRAY FLOOR</text>
+  <text x="410.9" y="357.8" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" fill="#b45309">← +x (away from arm) · SO-101 base on right</text>
+  <circle cx="224.4" cy="222.4" r="22.2" fill="#ffffff" fill-opacity="0.7" stroke="#96aa9d" stroke-width="1.1" stroke-dasharray="3,2.5"/>
+  <line x1="220.4" y1="222.4" x2="228.4" y2="222.4" stroke="#b45309" stroke-width="1.2"/>
+  <line x1="224.4" y1="218.4" x2="224.4" y2="226.4" stroke="#b45309" stroke-width="1.2"/>
+  <circle cx="157.8" cy="241.6" r="22.2" fill="#ffffff" fill-opacity="0.7" stroke="#96aa9d" stroke-width="1.1" stroke-dasharray="3,2.5"/>
+  <line x1="153.8" y1="241.6" x2="161.8" y2="241.6" stroke="#b45309" stroke-width="1.2"/>
+  <line x1="157.8" y1="237.6" x2="157.8" y2="245.6" stroke="#b45309" stroke-width="1.2"/>
+  <circle cx="283.6" cy="197.2" r="22.2" fill="#ffffff" fill-opacity="0.7" stroke="#96aa9d" stroke-width="1.1" stroke-dasharray="3,2.5"/>
+  <line x1="279.6" y1="197.2" x2="287.6" y2="197.2" stroke="#b45309" stroke-width="1.2"/>
+  <line x1="283.6" y1="193.2" x2="283.6" y2="201.2" stroke="#b45309" stroke-width="1.2"/>
+  <text x="157.8" y="278.8" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#1d2420">G2</text>
+  <text x="224.4" y="192.2" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#53605a">G1 (pilot)</text>
+  <text x="313.8" y="201.2" text-anchor="start" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#1d2420">G3</text>
+  <polygon points="228.8,220.7 232.0,223.9 228.8,227.1 225.6,223.9" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="226.5" cy="228.8" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="223.8,222.6 227.0,225.8 223.8,229.0 220.6,225.8" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="220.3" cy="231.1" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="282.7,190.3 285.9,193.5 282.7,196.7 279.5,193.5" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="271.5" cy="207.2" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="164.0,243.9 167.2,247.1 164.0,250.3 160.8,247.1" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="164.8" cy="248.9" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="268.9,199.8 272.1,203.0 268.9,206.2 265.7,203.0" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="270.3" cy="204.5" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="158.8,245.5 162.0,248.7 158.8,251.9 155.6,248.7" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="159.1" cy="245.3" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="155.0,244.7 158.2,247.9 155.0,251.1 151.8,247.9" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="159.7" cy="244.2" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="275.2,196.6 278.4,199.8 275.2,203.0 272.0,199.8" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="270.9" cy="206.1" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="269.7,197.3 272.9,200.5 269.7,203.7 266.5,200.5" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="268.8" cy="205.1" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="275.8,188.4 279.0,191.6 275.8,194.8 272.6,191.6" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="272.1" cy="200.8" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <polygon points="165.1,244.8 168.3,248.0 165.1,251.2 161.9,248.0" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.4"/>
+  <circle cx="159.4" cy="249.5" r="2.8" fill="#215a49" stroke="#fcfcfa" stroke-width="0.8"/>
+  <line x1="436" y1="74" x2="436" y2="394" stroke="#d7ded8" stroke-width="1"/>
+  <circle cx="524" cy="148" r="54.0" fill="#f6f8f5" stroke="#8ea396" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <circle cx="524" cy="148" r="27.0" fill="none" stroke="#dce3de" stroke-width="1"/>
+  <line x1="464.0" y1="148" x2="584.0" y2="148" stroke="#e2e8e3" stroke-width="1"/>
+  <line x1="524" y1="88.0" x2="524" y2="208.0" stroke="#e2e8e3" stroke-width="1"/>
+  <line x1="519" y1="148" x2="529" y2="148" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="524" y1="143" x2="524" y2="153" stroke="#b45309" stroke-width="1.5"/>
+  <circle cx="531.1" cy="163.3" r="9.4" fill="rgba(90,75,94,0.08)" stroke="#5a4b5e" stroke-width="1" stroke-opacity="0.55"/>
+  <circle cx="531.2" cy="161.0" r="7.7" fill="rgba(33,90,73,0.14)" stroke="#215a49" stroke-width="1" stroke-opacity="0.55"/>
+  <polygon points="539.1,157.5 542.9,161.3 539.1,165.1 535.3,161.3" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="540.9" cy="165.6" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="526.5,161.5 530.3,165.3 526.5,169.1 522.7,165.3" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="527.2" cy="157.0" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="517.2,159.3 521.0,163.1 517.2,166.9 513.4,163.1" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="528.7" cy="154.1" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="541.6,159.7 545.4,163.5 541.6,167.3 537.8,163.5" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="528.0" cy="167.1" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <text x="592" y="126" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#1d2420">Goal 2 (far-left · 4 pairs)</text>
+  <text x="592" y="144" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="600" fill="#215a49">High precision + high accuracy</text>
+  <text x="592" y="162" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.8" fill="#53605a">Spread: 2.1 mm (Py) vs 2.6 mm (Tools)</text>
+  <text x="592" y="179" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#738079">Shaded ring = mean cluster spread</text>
+  <circle cx="524" cy="316" r="54.0" fill="#f6f8f5" stroke="#8ea396" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <circle cx="524" cy="316" r="27.0" fill="none" stroke="#dce3de" stroke-width="1"/>
+  <line x1="464.0" y1="316" x2="584.0" y2="316" stroke="#e2e8e3" stroke-width="1"/>
+  <line x1="524" y1="256.0" x2="524" y2="376.0" stroke="#e2e8e3" stroke-width="1"/>
+  <line x1="519" y1="316" x2="529" y2="316" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="524" y1="311" x2="524" y2="321" stroke="#b45309" stroke-width="1.5"/>
+  <circle cx="501.8" cy="317.1" r="15.0" fill="rgba(90,75,94,0.08)" stroke="#5a4b5e" stroke-width="1" stroke-opacity="0.55"/>
+  <circle cx="492.6" cy="334.2" r="7.2" fill="rgba(33,90,73,0.14)" stroke="#215a49" stroke-width="1" stroke-opacity="0.55"/>
+  <polygon points="521.8,303.2 525.6,307.0 521.8,310.8 518.0,307.0" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="494.5" cy="340.1" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="488.4,326.2 492.2,330.0 488.4,333.8 484.6,330.0" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="491.6" cy="333.6" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="503.5,318.3 507.3,322.1 503.5,325.9 499.7,322.1" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="493.0" cy="337.6" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="490.2,320.1 494.0,323.9 490.2,327.7 486.4,323.9" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="488.0" cy="335.1" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <polygon points="504.9,298.5 508.7,302.3 504.9,306.1 501.1,302.3" fill="#ffffff" stroke="#5a4b5e" stroke-width="1.6"/>
+  <circle cx="495.9" cy="324.6" r="3.3" fill="#215a49" stroke="#fcfcfa" stroke-width="0.9"/>
+  <text x="592" y="294" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#1d2420">Goal 3 (near-arm · 5 pairs)</text>
+  <text x="592" y="312" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="600" fill="#a45b39">High precision, systematic +x bias</text>
+  <text x="592" y="330" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.8" fill="#53605a">Spread: 1.4 mm (Py) vs 4.2 mm (Tools)</text>
+  <text x="592" y="347" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" fill="#738079">Shaded ring = mean cluster spread</text>
+</svg>

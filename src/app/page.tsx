@@ -17,9 +17,10 @@ import {
   Education,
   Experience,
   Projects,
-  Publications,
+  Research,
   Skills,
 } from "@/components/sections";
+import { SiteNav } from "@/components/ui";
 import { useTheme } from "@/hooks/useTheme";
 
 export default function Home() {
@@ -49,7 +50,8 @@ export default function Home() {
       transition={modeTransition}
       className={`font-sans ${textClass}`}
     >
-      <section className="relative h-screen w-full overflow-hidden">
+      <SiteNav mode={mode} />
+      <section id="top" className="relative h-screen w-full overflow-hidden">
         <AnimatedBackground mode={mode} />
         {isClient && (
           <MouseTrail activeArea={heroHeight} mode={mode} trailDuration={500} />
@@ -113,6 +115,15 @@ export default function Home() {
           >
             enter
           </motion.button>
+          <motion.a
+            href="/research/llm-robot-interface/"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className={`mt-8 max-w-xs text-sm underline underline-offset-4 decoration-1 opacity-80 hover:opacity-100 ${textClass}`}
+          >
+            new: a field study on how LLMs should control a robot arm
+          </motion.a>
         </div>
       </section>
       <motion.main
@@ -121,11 +132,17 @@ export default function Home() {
         animate={{ backgroundColor: bgColor }}
         transition={modeTransition}
       >
-        <About mode={mode} />
+        <div id="about" className="scroll-mt-12">
+          <About mode={mode} />
+        </div>
         <Education mode={mode} />
-        <Experience mode={mode} />
+        <div id="experience" className="scroll-mt-12">
+          <Experience mode={mode} />
+        </div>
         <Projects mode={mode} />
-        <Publications mode={mode} />
+        <div id="research" className="scroll-mt-12">
+          <Research mode={mode} />
+        </div>
         <Skills mode={mode} />
       </motion.main>
     </motion.div>

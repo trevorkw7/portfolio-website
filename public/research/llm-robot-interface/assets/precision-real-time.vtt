@@ -1,0 +1,89 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.700
+One matched pilot pair, recorded one run
+after the other on the same physical arm.
+
+2
+00:00:07.100 --> 00:00:14.800
+Can a Python program help Fable land
+the film carton closer to the target?
+
+3
+00:00:15.100 --> 00:00:22.600
+Both runs get front and wrist camera views
+and readings of the five arm joints.
+
+4
+00:00:23.000 --> 00:00:30.500
+Both choose the next joint angles. Only
+the right run can also write and run Python.
+
+5
+00:00:31.000 --> 00:00:38.800
+Place the pink-banded Fuji within 15 mm
+of an unmarked point on the tray.
+
+6
+00:00:39.000 --> 00:00:47.100
+Align the long edge within 15° of the arm’s
+forward axis. Release and stay clear for 3 s.
+
+7
+00:00:51.500 --> 00:00:59.100
+While the arm is parked, Python returns
+a grid on the first camera image.
+
+8
+00:02:13.600 --> 00:02:19.150
+On the right, Python prints five angles
+for the arm joints.
+
+9
+00:02:19.400 --> 00:02:27.100
+The right arm reaches. It reports its
+first completed move at 2:24.
+
+10
+00:03:22.200 --> 00:03:28.800
+The right gripper closes on the carton.
+
+11
+00:03:55.000 --> 00:04:02.100
+The right arm lifts the carton clear
+of the bench.
+
+12
+00:04:08.000 --> 00:04:15.600
+It carries the carton over the tray.
+
+13
+00:04:24.000 --> 00:04:31.800
+The right gripper lowers the carton
+onto the tray, then opens.
+
+14
+00:04:49.075 --> 00:04:57.000
+The right run ends at 4:49.
+The left arm’s first move ends at 4:50.
+
+15
+00:06:13.500 --> 00:06:21.400
+The left gripper closes on its carton
+and lifts it.
+
+16
+00:06:52.100 --> 00:06:59.600
+The left arm carries the carton
+toward the same target.
+
+17
+00:07:14.000 --> 00:07:21.100
+The left gripper opens and lifts clear.
+The carton stays on the tray.
+
+18
+00:07:22.000 --> 00:07:29.900
+Center errors were 3.1 mm without Python
+and 4.5 mm with it. Both placements passed.

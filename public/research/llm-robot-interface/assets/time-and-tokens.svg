@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" width="960" height="390" role="img" style="background:#fcfcfa">
+<rect width="960" height="390" fill="#fcfcfa"/>
+<text x="24" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#1d2420">Episode time and API cost (11 paired runs)</text>
+<text x="24" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">Episode clock breakdown</text>
+<rect x="24" y="81" width="11" height="11" fill="#5a4b5e" fill-opacity="0.82" rx="2"/>
+<text x="40" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Model waiting</text>
+<rect x="132" y="81" width="11" height="11" fill="#215a49" rx="2"/>
+<text x="148" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Arm motion (~1.1 m)</text>
+<rect x="282" y="81" width="11" height="11" fill="#a45b39" rx="2"/>
+<text x="298" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Python CPU (13 s)</text>
+<line x1="120.0" y1="108" x2="120.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="120.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">0</text>
+<line x1="174.7" y1="108" x2="174.7" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="174.7" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">2</text>
+<line x1="229.3" y1="108" x2="229.3" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="229.3" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">4</text>
+<line x1="284.0" y1="108" x2="284.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="284.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">6</text>
+<line x1="338.7" y1="108" x2="338.7" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="338.7" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">8</text>
+<line x1="393.3" y1="108" x2="393.3" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="393.3" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">10</text>
+<line x1="448.0" y1="108" x2="448.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="448.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">12</text>
+<text x="284.0" y="314" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">Minutes per episode</text>
+<text x="110.0" y="158" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#1d2420">Tools only</text>
+<rect x="120.0" y="136" width="259.1" height="34" fill="#5a4b5e" fill-opacity="0.82" rx="2"/>
+<rect x="379.1" y="136" width="30.9" height="34" fill="#215a49" rx="2"/>
+<text x="249.6" y="157" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">9.5 min waiting (89%)</text>
+<text x="417.0" y="157" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#1d2420">10.61 m</text>
+<text x="120.0" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#53605a">Median thinking pause: 26.8 s · 8.7 API turns</text>
+<text x="110.0" y="234" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#1d2420">With Python</text>
+<rect x="120.0" y="212" width="182.3" height="34" fill="#5a4b5e" fill-opacity="0.58" rx="2"/>
+<rect x="302.3" y="212" width="6.0" height="34" fill="#a45b39"/>
+<rect x="308.3" y="212" width="30.9" height="34" fill="#215a49" rx="2"/>
+<text x="211.2" y="233" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">6.7 min (85%)</text>
+<text x="346.2" y="233" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#215a49">8.02 m (−2.59 m)</text>
+<text x="120.0" y="261" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#53605a">Median thinking pause: 5.3 s · 24.6 API turns (2.8×)</text>
+<line x1="496" y1="60" x2="496" y2="335" stroke="#dde5df" stroke-width="1"/>
+<text x="518" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">API bill by token type (Fable 5.2 list prices)</text>
+<rect x="518" y="81" width="11" height="11" fill="#5a4b5e" rx="2"/>
+<text x="534" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Output ($40/M)</text>
+<rect x="642" y="81" width="11" height="11" fill="#88a89a" rx="2"/>
+<text x="658" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Cache write ($16/M)</text>
+<rect x="794" y="81" width="11" height="11" fill="#c79b4b" rx="2"/>
+<text x="810" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Cache read ($0.20/M)</text>
+<line x1="536.0" y1="108" x2="536.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="536.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">$0</text>
+<line x1="616.0" y1="108" x2="616.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="616.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">$1</text>
+<line x1="696.0" y1="108" x2="696.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="696.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">$2</text>
+<line x1="776.0" y1="108" x2="776.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="776.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">$3</text>
+<line x1="856.0" y1="108" x2="856.0" y2="278" stroke="#e7ece8" stroke-width="1"/>
+<text x="856.0" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">$4</text>
+<text x="716.0" y="314" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">USD per episode (11-pair mean)</text>
+<rect x="536.0" y="136" width="176.2" height="34" fill="#5a4b5e" rx="2"/>
+<rect x="712.2" y="136" width="137.7" height="34" fill="#88a89a"/>
+<rect x="849.8" y="136" width="7.8" height="34" fill="#c79b4b" rx="2"/>
+<text x="624.1" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="600" fill="#ffffff">$2.20 (55.0k)</text>
+<text x="781.0" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#163329">$1.72</text>
+<text x="864.6" y="157" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#1d2420">$4.02</text>
+<text x="536.0" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#53605a">Cache read: 483k tok ($0.10) · Cache write: 108k tok ($1.72)</text>
+<rect x="536.0" y="212" width="116.7" height="34" fill="#5a4b5e" fill-opacity="0.82" rx="2"/>
+<rect x="652.7" y="212" width="141.0" height="34" fill="#88a89a"/>
+<rect x="793.8" y="212" width="23.0" height="34" fill="#c79b4b" rx="2"/>
+<text x="594.4" y="233" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="600" fill="#ffffff">$1.46 (36.5k)</text>
+<text x="723.2" y="233" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#163329">$1.76</text>
+<text x="823.8" y="233" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#215a49">$3.51 (−$0.51)</text>
+<text x="536.0" y="261" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#53605a">Cache read: 1.44M tok ($0.29) · Cache write: 110k tok ($1.76)</text>
+<rect x="24" y="340" width="912" height="34" rx="4" fill="#f2f5f2" stroke="#dce4de"/>
+<text x="480" y="361" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#1d2420">2.8× more API turns added <tspan font-weight="600">+$0.19</tspan> in cache reads ($0.20/M), while 34% fewer output tokens saved <tspan font-weight="600" fill="#215a49">−$0.74</tspan> ($40/M).</text>
+</svg>

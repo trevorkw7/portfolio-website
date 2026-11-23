@@ -102,11 +102,24 @@ export const resume = {
     }
   ],
   
+  research: [
+    {
+      title: "What is the right interface layer for an LLM to control a robot?",
+      summary: "A controlled trial on a $200 SO-101 arm, giving Claude raw joint control with and without a Python interpreter. Both setups hit the target 11 times out of 11, while Python cut output tokens by a third and saved 2.6 minutes per run.",
+      venue: "Self-published field study, 2026",
+      link: "/research/llm-robot-interface/",
+      image: "/research/llm-robot-interface/assets/fuji-over-tray.jpg",
+      imageAlt: "A turquoise SO-101 robot arm holding a green film carton above a clear tray",
+      code: "https://github.com/trevorkw7/llm-robot-interface",
+      data: "/research/llm-robot-interface/evidence.html",
+    },
+  ],
+
   publications: [
     {
       title: "Chasing Currents: Implementing Depth Optimization for AUV Energy Savings",
       authors: "Trevor Kwan; Raymond Young; Andrew Nager; Mark Anderson; Eric Terrill; Sophia Merrifield",
-      conference: "IEEE Oceans 2024",
+      conference: "IEEE OCEANS 2024, peer-reviewed",
       date: "2024",
       link: "https://doi.org/10.1109/OCEANS55160.2024.10754212"
     }

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" width="820" height="340" role="img" aria-label="Top-down schematic of the SO-101 workspace matching the desk photos">
+  <defs>
+    <marker id="traj" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#6ee7b7"/>
+    </marker>
+    <marker id="axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="820" height="340" fill="#fcfcfa"/>
+
+  <!-- Header -->
+  <text x="28" y="32" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15.5" font-weight="600" fill="#1d2420">The desk setup: pick one carton, place it on an unmarked point</text>
+  <text x="28" y="51" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#53605a">Top-down map oriented like the front camera (camera at bottom looking back toward the tray and arm).</text>
+
+  <!-- Tabletop background for workspace -->
+  <rect x="28" y="68" width="492" height="250" rx="6" fill="#eceee9" stroke="#d7ded8" stroke-width="1"/>
+
+  <!-- Black work mat (left/center of tabletop, matching real photo) -->
+  <rect x="44" y="82" width="356" height="222" rx="4" fill="#2b312e" stroke="#1d2420" stroke-width="1"/>
+  <text x="56" y="295" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.5" fill="#9aa8a0">FRONT CAMERA VIEW ↑</text>
+
+  <!-- SO-101 Base on the right edge of the mat (back-right, matching fuji-over-tray.jpg) -->
+  <g transform="translate(458, 134)">
+    <rect x="-34" y="-34" width="68" height="68" rx="8" fill="#2fb7ad" stroke="#186e68" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="#1c8b83" stroke="#e6f7f5" stroke-width="1.2"/>
+    <text x="0" y="50" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="600" fill="#1d2420">SO-101 base</text>
+    <!-- +x axis pointing LEFT across the mat -->
+    <line x1="-38" y1="0" x2="-72" y2="0" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#axis)"/>
+    <text x="-55" y="-7" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" font-weight="600" fill="#fbbf24">+x</text>
+    <!-- +y axis pointing DOWN toward front camera -->
+    <line x1="0" y1="58" x2="0" y2="86" stroke="#b45309" stroke-width="1.4" marker-end="url(#axis)"/>
+    <text x="12" y="84" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" font-weight="600" fill="#b45309">+y</text>
+  </g>
+
+  <!-- Shallow clear tray across the BACK (top) of the black mat -->
+  <rect x="78" y="92" width="286" height="84" rx="6" fill="#e8eeea" fill-opacity="0.16" stroke="#c9d5cd" stroke-width="1.8"/>
+  <rect x="86" y="99" width="270" height="70" rx="3" fill="none" stroke="#9aa8a0" stroke-width="0.9" stroke-dasharray="3,3"/>
+  <!-- Two subtle white tape strips under tray floor -->
+  <rect x="112" y="106" width="218" height="10" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="112" y="148" width="218" height="10" fill="#ffffff" fill-opacity="0.12"/>
+  <text x="92" y="112" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9.5" fill="#d2ddd6">SHALLOW TRAY (UNMARKED)</text>
+
+  <!-- Example unmarked goal target inside tray -->
+  <g transform="translate(222, 134)">
+    <circle cx="0" cy="0" r="22" fill="#215a49" fill-opacity="0.32" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="-34" y1="0" x2="34" y2="0" stroke="#fbbf24" stroke-width="1.4" stroke-dasharray="2,2"/>
+    <rect x="-21" y="-11" width="42" height="22" rx="2" fill="#34d399" fill-opacity="0.38" stroke="#6ee7b7" stroke-width="1.4"/>
+    <circle cx="0" cy="0" r="3" fill="#fbbf24"/>
+    <rect x="-76" y="21" width="152" height="15" rx="3" fill="#3c4440" fill-opacity="0.92"/>
+    <text x="0" y="32" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9" fill="#ecfdf5">goal (x, y) · ≤15 mm · ±15°</text>
+  </g>
+
+  <!-- 2x2 foreground cartons (exact layout from precision-activity.jpg) -->
+  <!-- Back-left: Kodak Gold -->
+  <g transform="translate(136, 206)">
+    <rect x="-24" y="-14" width="48" height="28" rx="2" fill="#eab308" stroke="#854d0e" stroke-width="1"/>
+    <rect x="-24" y="-14" width="48" height="7" rx="1" fill="#be185d"/>
+    <text x="0" y="6" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#422006">Kodak</text>
+  </g>
+  <!-- Back-right: Ilford -->
+  <g transform="translate(274, 206)">
+    <rect x="-24" y="-14" width="48" height="28" rx="2" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+    <text x="0" y="4" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#1f2937">Ilford</text>
+  </g>
+  <!-- Front-left: Superia 100 (green look-alike distractor) -->
+  <g transform="translate(116, 260)">
+    <rect x="-25" y="-14" width="50" height="28" rx="2" fill="#22c55e" stroke="#166534" stroke-width="1"/>
+    <text x="0" y="4" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="9" font-weight="700" fill="#052e16">Fuji 100</text>
+  </g>
+  <!-- Front-right: Target green Fuji 200 with pink band -->
+  <g transform="translate(302, 260)">
+    <rect x="-25" y="-14" width="50" height="28" rx="2" fill="#16a34a" stroke="#dcfce7" stroke-width="1.6"/>
+    <rect x="-25" y="-14" width="50" height="7" rx="1" fill="#ec4899"/>
+    <text x="0" y="6" text-anchor="middle" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="700" fill="#ffffff">Fuji 200</text>
+  </g>
+
+  <!-- Pick-and-place path from Fuji 200 (front-right) around Ilford up into the tray goal -->
+  <path d="M 308,244 C 344,216 334,160 250,140" fill="none" stroke="#6ee7b7" stroke-width="2.3" stroke-dasharray="5,3" marker-end="url(#traj)"/>
+
+  <!-- Right-side 3-step pass checklist -->
+  <g transform="translate(542, 74)">
+    <text x="0" y="14" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#215a49" letter-spacing="0.06em">PASS CRITERIA</text>
+    <line x1="0" y1="23" x2="250" y2="23" stroke="#d7ded8" stroke-width="1"/>
+
+    <!-- Step 1 -->
+    <circle cx="11" cy="48" r="10" fill="#edf4ef" stroke="#215a49" stroke-width="1.2"/>
+    <text x="11" y="52" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#215a49">1</text>
+    <text x="30" y="46" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">Pick the right carton</text>
+    <text x="30" y="63" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">Green Fuji 200 (pink band) among</text>
+    <text x="30" y="78" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">three distractors, including Fuji 100.</text>
+
+    <!-- Step 2 -->
+    <circle cx="11" cy="112" r="10" fill="#edf4ef" stroke="#215a49" stroke-width="1.2"/>
+    <text x="11" y="116" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#215a49">2</text>
+    <text x="30" y="110" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">Hit the unmarked pose</text>
+    <text x="30" y="127" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">Center within 15 mm of (x, y) and</text>
+    <text x="30" y="142" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">long edge within ±15° of target axis.</text>
+
+    <!-- Step 3 -->
+    <circle cx="11" cy="176" r="10" fill="#edf4ef" stroke="#215a49" stroke-width="1.2"/>
+    <text x="11" y="180" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#215a49">3</text>
+    <text x="30" y="174" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="600" fill="#1d2420">Release &amp; clear for 3 s</text>
+    <text x="30" y="191" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">Flat on a long face inside the tray,</text>
+    <text x="30" y="206" font-family="'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#53605a">gripper withdrawn before finish().</text>
+  </g>
+</svg>

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" style="background:#fcfcfa">
+<rect width="960" height="440" fill="#fcfcfa"/>
+<text x="28" y="36" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#1d2420">Placement error by target location and wrist-roll branch</text>
+<polygon points="36,56 42,62 36,68 30,62" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="2"/>
+<text x="50" y="67" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#1d2420">Tools only</text>
+<circle cx="152" cy="62" r="5" fill="#215a49"/>
+<text x="164" y="67" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#1d2420">With Python</text>
+<text x="118" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">All 11 paired runs by target</text>
+<line x1="118.0" y1="104" x2="118.0" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="118.0" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">0</text>
+<line x1="181.2" y1="104" x2="181.2" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="181.2" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">3</text>
+<line x1="244.4" y1="104" x2="244.4" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="244.4" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">6</text>
+<line x1="307.6" y1="104" x2="307.6" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="307.6" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">9</text>
+<line x1="370.8" y1="104" x2="370.8" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="370.8" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">12</text>
+<line x1="434.0" y1="104" x2="434.0" y2="368" stroke="#a45b39" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="434.0" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">15</text>
+<text x="276" y="406" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#53605a">Center distance from target (mm)</text>
+<text x="430" y="100" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#a45b39">15 mm pass limit</text>
+<text x="108" y="122.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G1 · Pair 1</text>
+<line x1="183.3" y1="118.0" x2="212.8" y2="118.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="183.3,113.0 188.3,118.0 183.3,123.0 178.3,118.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="212.8" cy="118.0" r="4.3" fill="#215a49"/>
+<text x="108" y="140.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G1 · Pair 2</text>
+<line x1="166.5" y1="136.0" x2="257.0" y2="136.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="166.5,131.0 171.5,136.0 166.5,141.0 161.5,136.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="257.0" cy="136.0" r="4.3" fill="#215a49"/>
+<line x1="28" y1="148.0" x2="455" y2="148.0" stroke="#d7ded8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="108" y="163.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G2 · Pair 4</text>
+<line x1="236.0" y1="159.0" x2="261.3" y2="159.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="236.0,154.0 241.0,159.0 236.0,164.0 231.0,159.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="261.3" cy="159.0" r="4.3" fill="#215a49"/>
+<text x="108" y="181.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G2 · Pair 6</text>
+<line x1="221.2" y1="177.0" x2="174.9" y2="177.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="221.2,172.0 226.2,177.0 221.2,182.0 216.2,177.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="174.9" cy="177.0" r="4.3" fill="#215a49"/>
+<text x="108" y="199.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G2 · Pair 7</text>
+<line x1="214.9" y1="195.0" x2="162.2" y2="195.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="214.9,190.0 219.9,195.0 214.9,200.0 209.9,195.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="162.2" cy="195.0" r="4.3" fill="#215a49"/>
+<text x="108" y="217.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G2 · Pair 11</text>
+<line x1="254.9" y1="213.0" x2="231.8" y2="213.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="254.9,208.0 259.9,213.0 254.9,218.0 249.9,213.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="231.8" cy="213.0" r="4.3" fill="#215a49"/>
+<line x1="28" y1="225.0" x2="455" y2="225.0" stroke="#d7ded8" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="108" y="240.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G3 · Pair 3</text>
+<line x1="172.8" y1="236.0" x2="341.3" y2="236.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="172.8,231.0 177.8,236.0 172.8,241.0 167.8,236.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="341.3" cy="236.0" r="4.3" fill="#215a49"/>
+<text x="108" y="258.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G3 · Pair 5</text>
+<line x1="343.4" y1="254.0" x2="335.0" y2="254.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="343.4,249.0 348.4,254.0 343.4,259.0 338.4,254.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="335.0" cy="254.0" r="4.3" fill="#215a49"/>
+<text x="108" y="276.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G3 · Pair 8</text>
+<line x1="244.4" y1="272.0" x2="337.1" y2="272.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="244.4,267.0 249.4,272.0 244.4,277.0 239.4,272.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="337.1" cy="272.0" r="4.3" fill="#215a49"/>
+<text x="108" y="294.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G3 · Pair 9</text>
+<line x1="320.2" y1="290.0" x2="358.2" y2="290.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="320.2,285.0 325.2,290.0 320.2,295.0 315.2,290.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="358.2" cy="290.0" r="4.3" fill="#215a49"/>
+<text x="108" y="312.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">G3 · Pair 10</text>
+<line x1="254.9" y1="308.0" x2="290.7" y2="308.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="254.9,303.0 259.9,308.0 254.9,313.0 249.9,308.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="290.7" cy="308.0" r="4.3" fill="#215a49"/>
+<line x1="28" y1="328" x2="455" y2="328" stroke="#d7ded8" stroke-width="1"/>
+<text x="108" y="352" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#1d2420">Means</text>
+<polygon points="237.4,338 242.4,343 237.4,348 232.4,343" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<text x="246.4" y="347" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#5a4b5e">5.67 mm</text>
+<circle cx="269.3" cy="358" r="4.3" fill="#215a49"/>
+<text x="278.3" y="362" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#215a49">7.18 mm</text>
+<text x="550" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">All 27 finished precision runs: +x error by wrist roll</text>
+<rect x="660.8" y="108" width="24.3" height="260" fill="#f6ebe5" rx="2"/>
+<text x="673.0" y="124" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#a45b39">roll ≈ −60°</text>
+<text x="673.0" y="137" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" fill="#a45b39">all 5 G3 Python</text>
+<text x="673.0" y="149" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" fill="#a45b39">+ 3 G3 Tools</text>
+<line x1="550" y1="333.1" x2="930" y2="333.1" stroke="#e7ece8" stroke-width="1"/>
+<text x="542" y="337.1" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">-5</text>
+<line x1="550" y1="274.9" x2="930" y2="274.9" stroke="#d7ded8" stroke-width="1.2"/>
+<text x="542" y="278.9" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">+0</text>
+<line x1="550" y1="216.7" x2="930" y2="216.7" stroke="#e7ece8" stroke-width="1"/>
+<text x="542" y="220.7" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">+5</text>
+<line x1="550" y1="158.5" x2="930" y2="158.5" stroke="#e7ece8" stroke-width="1"/>
+<text x="542" y="162.5" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">+10</text>
+<text x="512" y="240.0" text-anchor="middle" transform="rotate(-90 512 240.0)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">Measured +x error from goal (mm)</text>
+<line x1="550.0" y1="108" x2="550.0" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="550.0" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">-180°</text>
+<line x1="613.3" y1="108" x2="613.3" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="613.3" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">-120°</text>
+<line x1="676.7" y1="108" x2="676.7" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="676.7" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">-60°</text>
+<line x1="740.0" y1="108" x2="740.0" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="740.0" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">0°</text>
+<line x1="803.3" y1="108" x2="803.3" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="803.3" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">60°</text>
+<line x1="866.7" y1="108" x2="866.7" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="866.7" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">120°</text>
+<line x1="930.0" y1="108" x2="930.0" y2="368" stroke="#e7ece8" stroke-width="1"/>
+<text x="930.0" y="386" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">180°</text>
+<text x="740.0" y="406" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#53605a">Release wrist_roll angle (degrees)</text>
+<polygon points="862.0,304.04548001927867 867.5,309.54548001927867 862.0,315.04548001927867 856.5,309.54548001927867" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="861.3" cy="291.7" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="862.7,265.2504197091323 868.2,270.7504197091323 862.7,276.2504197091323 857.2,270.7504197091323" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="666.7" cy="242.0" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="873.6,261.9047416566004 879.1,267.4047416566004 873.6,272.9047416566004 868.1,267.4047416566004" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="676.5" cy="179.1" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="753.7,318.7262400014204 759.2,324.2262400014204 753.7,329.7262400014204 748.2,324.2262400014204" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="758.1" cy="329.4" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="565.9,246.06135785099733 571.4,251.56135785099733 565.9,257.0613578509973 560.4,251.56135785099733" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<polygon points="677.1,153.71851926880117 682.6,159.21851926880117 677.1,164.71851926880117 671.6,159.21851926880117" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="676.5" cy="169.8" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="758.0,277.214482274179 763.5,282.714482274179 758.0,288.214482274179 752.5,282.714482274179" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="757.0" cy="285.8" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="756.9,247.28376016431667 762.4,252.78376016431667 756.9,258.2837601643167 751.4,252.78376016431667" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="758.2" cy="290.1" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="678.1,202.6352585149775 683.6,208.1352585149775 678.1,213.6352585149775 672.6,208.1352585149775" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="676.2" cy="175.3" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<circle cx="861.1" cy="281.8" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="758.7,289.5133894664475 764.2,295.0133894664475 758.7,300.5133894664475 753.2,295.0133894664475" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="758.6" cy="278.6" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="673.6,160.26188297594555 679.1,165.76188297594555 673.6,171.26188297594555 668.1,165.76188297594555" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="678.0" cy="158.3" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="873.8,207.41809988044605 879.3,212.91809988044605 873.8,218.41809988044605 868.3,212.91809988044605" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="677.6" cy="184.0" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<polygon points="758.6,325.912381515526 764.1,331.412381515526 758.6,336.912381515526 753.1,331.412381515526" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="758.4" cy="287.9" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<circle cx="862.6" cy="244.0" r="4.5" fill="#215a49" fill-opacity="0.9"/>
+<text x="873.0" y="338.9" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#5a4b5e">2 G3 Tools runs</text>
+<text x="873.0" y="356.4" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" fill="#5a4b5e">dodged the shift</text>
+</svg>

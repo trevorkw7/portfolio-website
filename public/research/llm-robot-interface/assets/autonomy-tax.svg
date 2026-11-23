@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 350" width="960" height="350" role="img" style="background:#fcfcfa">
+<rect width="960" height="350" fill="#fcfcfa"/>
+<text x="28" y="36" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#1d2420">The autonomy tax across 100.4 hours on the desk</text>
+<text x="28" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">62,834 physical motion commands dispatched (76:1 ratio)</text>
+<text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">Evaluated actors issued 816 commands (1.3%); bench plumbing issued 62,018 (98.7%)</text>
+<text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1d2420">Qualification &amp; calibration</text>
+<rect x="28" y="129" width="294.8" height="20" fill="#7f968a" rx="2"/>
+<text x="330.8" y="144" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="400" fill="#1d2420">46,067 (73.3%)</text>
+<text x="28" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1d2420">Automated scene resets</text>
+<rect x="28" y="179" width="95.8" height="20" fill="#a6b5ad" rx="2"/>
+<text x="131.8" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="400" fill="#1d2420">14,975 (23.8%)</text>
+<text x="28" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1d2420">Live coordinator recovery</text>
+<rect x="28" y="229" width="7.0" height="20" fill="#a45b39" rx="2"/>
+<text x="43.0" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="400" fill="#1d2420">976 (1.6%)</text>
+<text x="28" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#215a49">Evaluated actors (49 runs)</text>
+<rect x="28" y="279" width="7.0" height="20" fill="#215a49" rx="2"/>
+<text x="43.0" y="294" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#215a49">816 (1.3%)</text>
+<text x="530" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">First-try automated reset acceptance</text>
+<text x="530" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">Camera-verified start within 15 mm before launching the next actor</text>
+<text x="530" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#1d2420">V3 Whole-tray</text>
+<rect x="530" y="129" width="275" height="20" fill="#e7ece8" rx="2"/>
+<rect x="530" y="129" width="275.0" height="20" fill="#215a49" rx="2"/>
+<text x="815" y="144" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#215a49">100% (12 / 12)</text>
+<text x="530" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#1d2420">V4 Precision pilot</text>
+<rect x="530" y="179" width="275" height="20" fill="#e7ece8" rx="2"/>
+<rect x="530" y="179" width="252.2" height="20" fill="#215a49" rx="2"/>
+<text x="815" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#215a49">92% (11 / 12)</text>
+<text x="530" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#1d2420">V4 Precision main</text>
+<rect x="530" y="229" width="275" height="20" fill="#e7ece8" rx="2"/>
+<rect x="530" y="229" width="275.0" height="20" fill="#215a49" rx="2"/>
+<text x="815" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#215a49">100% (18 / 18)</text>
+<text x="530" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" fill="#1d2420">V5 One-look (blind)</text>
+<rect x="530" y="279" width="275" height="20" fill="#e7ece8" rx="2"/>
+<rect x="530" y="279" width="157.0" height="20" fill="#a45b39" rx="2"/>
+<text x="815" y="294" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#a45b39">57% (4 / 7)</text>
+</svg>

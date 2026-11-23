@@ -1,0 +1,63 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.650 line:39% position:50% size:91% align:center
+One matched pilot pair. The same SO-101 arm
+ran one trial, then the other.
+
+2
+00:00:04.700 --> 00:00:08.950 line:39% position:50% size:91% align:center
+Both saw cameras and joint readings.
+Only the right could use Python.
+
+3
+00:00:09.000 --> 00:00:13.150 line:39% position:50% size:91% align:center
+Aim within 15 mm and 15°.
+Release and stay clear for 3 s.
+
+4
+00:00:13.200 --> 00:00:16.180 line:39% position:50% size:91% align:center
+Gold is Fable, blue Python, green the arm.
+
+5
+00:00:16.220 --> 00:00:20.950 line:39% position:50% size:91% align:center
+On the right, Fable draws a 20-pixel grid
+on its first camera image.
+
+6
+00:00:21.350 --> 00:00:24.180 line:39% position:50% size:91% align:center
+Fable sends Python’s five angles
+to the arm.
+
+7
+00:00:24.220 --> 00:00:27.320 line:39% position:50% size:91% align:center
+The right arm’s first move finished at 2:24.
+
+8
+00:00:27.400 --> 00:00:31.700 line:39% position:50% size:91% align:center
+The right wrist camera shows the jaws
+closing on the carton.
+
+9
+00:00:31.820 --> 00:00:37.680 line:39% position:50% size:91% align:center
+The right arm lifts the carton,
+carries it over the tray and lets go.
+
+10
+00:00:39.500 --> 00:00:44.750 line:39% position:50% size:91% align:center
+At 4:49, the right run ends.
+At 4:50, the left arm’s first move returns.
+
+11
+00:00:45.350 --> 00:00:50.500 line:39% position:50% size:91% align:center
+The left gripper picks up its carton
+and carries it over the tray.
+
+12
+00:00:50.850 --> 00:00:53.970 line:39% position:50% size:91% align:center
+The left gripper opens and backs away.
+
+13
+00:00:54.070 --> 00:00:59.567 line:39% position:50% size:91% align:center
+Without Python, 3.1 mm and 5.0°.
+With Python, 4.5 mm and 4.5°. Both pass.

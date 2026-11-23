@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" style="background:#fcfcfa">
+<rect width="960" height="440" fill="#fcfcfa"/>
+<text x="28" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#1d2420">Joint coordination and pre-move wait (11 paired runs)</text>
+<polygon points="36,52 41,57 36,62 31,57" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<text x="48" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#1d2420">Without Python</text>
+<circle cx="158" cy="57" r="4.5" fill="#215a49"/>
+<text x="169" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#1d2420">With Python</text>
+<text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">Arm moves setting all 5 joints at once (11/11 higher with Python)</text>
+<line x1="100.0" y1="112" x2="100.0" y2="372" stroke="#e7ece8" stroke-width="1"/>
+<text x="100.0" y="390" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">0%</text>
+<line x1="188.8" y1="112" x2="188.8" y2="372" stroke="#e7ece8" stroke-width="1"/>
+<text x="188.8" y="390" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">25%</text>
+<line x1="277.5" y1="112" x2="277.5" y2="372" stroke="#e7ece8" stroke-width="1"/>
+<text x="277.5" y="390" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">50%</text>
+<line x1="366.2" y1="112" x2="366.2" y2="372" stroke="#e7ece8" stroke-width="1"/>
+<text x="366.2" y="390" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">75%</text>
+<line x1="455.0" y1="112" x2="455.0" y2="372" stroke="#e7ece8" stroke-width="1"/>
+<text x="455.0" y="390" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">100%</text>
+<text x="277.5" y="410" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#53605a">Share of arm-bearing commands naming all 5 joints</text>
+<text x="90" y="130.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Pilot 1</text>
+<line x1="277.5" y1="126.0" x2="404.3" y2="126.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="277.5,121.0 282.5,126.0 277.5,131.0 272.5,126.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="404.3" cy="126.0" r="4.2" fill="#215a49"/>
+<text x="90" y="151.5" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Pilot 2</text>
+<line x1="373.1" y1="147.5" x2="429.6" y2="147.5" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="373.1,142.5 378.1,147.5 373.1,152.5 368.1,147.5" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="429.6" cy="147.5" r="4.2" fill="#215a49"/>
+<text x="90" y="173.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Pilot 3</text>
+<line x1="150.7" y1="169.0" x2="434.1" y2="169.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="150.7,164.0 155.7,169.0 150.7,174.0 145.7,169.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="434.1" cy="169.0" r="4.2" fill="#215a49"/>
+<text x="90" y="194.5" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Pilot 4</text>
+<line x1="150.7" y1="190.5" x2="455.0" y2="190.5" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="150.7,185.5 155.7,190.5 150.7,195.5 145.7,190.5" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="455.0" cy="190.5" r="4.2" fill="#215a49"/>
+<text x="90" y="216.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Pilot 6</text>
+<line x1="277.5" y1="212.0" x2="431.3" y2="212.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="277.5,207.0 282.5,212.0 277.5,217.0 272.5,212.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="431.3" cy="212.0" r="4.2" fill="#215a49"/>
+<text x="90" y="237.5" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Main 1</text>
+<line x1="144.4" y1="233.5" x2="429.6" y2="233.5" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="144.4,228.5 149.4,233.5 144.4,238.5 139.4,233.5" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="429.6" cy="233.5" r="4.2" fill="#215a49"/>
+<text x="90" y="259.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Main 2</text>
+<line x1="313.0" y1="255.0" x2="427.7" y2="255.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="313.0,250.0 318.0,255.0 313.0,260.0 308.0,255.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="427.7" cy="255.0" r="4.2" fill="#215a49"/>
+<text x="90" y="280.5" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Main 3</text>
+<line x1="225.3" y1="276.5" x2="455.0" y2="276.5" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="225.3,271.5 230.3,276.5 225.3,281.5 220.3,276.5" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="455.0" cy="276.5" r="4.2" fill="#215a49"/>
+<text x="90" y="302.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Main 6</text>
+<line x1="174.0" y1="298.0" x2="455.0" y2="298.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="174.0,293.0 179.0,298.0 174.0,303.0 169.0,298.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="455.0" cy="298.0" r="4.2" fill="#215a49"/>
+<text x="90" y="323.5" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Main 7</text>
+<line x1="252.1" y1="319.5" x2="455.0" y2="319.5" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="252.1,314.5 257.1,319.5 252.1,324.5 247.1,319.5" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="455.0" cy="319.5" r="4.2" fill="#215a49"/>
+<text x="90" y="345.0" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1d2420">Main 8</text>
+<line x1="299.7" y1="341.0" x2="455.0" y2="341.0" stroke="#9aa79f" stroke-width="1.8"/>
+<polygon points="299.7,336.0 304.7,341.0 299.7,346.0 294.7,341.0" fill="#fcfcfa" stroke="#5a4b5e" stroke-width="1.8"/>
+<circle cx="455.0" cy="341.0" r="4.2" fill="#215a49"/>
+<text x="235.6" y="366" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#5a4b5e">Pooled: 38.2%</text>
+<text x="423.2" y="366" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#215a49">96.1%</text>
+<text x="525" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#1d2420">Breakdown of Python’s 206 s pre-move wait</text>
+<text x="525" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#53605a">Mean across 11 paired runs (93 pre-move scripts · 9.5 s total CPU)</text>
+<text x="525" y="134" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#1d2420">Re-implementing 5-DOF IK &amp; collision checks</text>
+<rect x="525" y="142" width="278.2" height="22" fill="#215a49" rx="2"/>
+<text x="811.2" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#1d2420">134.6 s (65.2%)</text>
+<text x="533" y="157" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff">9.49 s CPU</text>
+<text x="525" y="186" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#1d2420">Spec inspection &amp; fk/proj bootstrap</text>
+<rect x="525" y="194" width="75.0" height="22" fill="#5b8a7a" rx="2"/>
+<text x="608.0" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#1d2420">36.3 s (17.6%)</text>
+<text x="525" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#1d2420">Cropping, 20 px grid &amp; 2D→3D localization</text>
+<rect x="525" y="246" width="54.4" height="22" fill="#8eb2a4" rx="2"/>
+<text x="587.4" y="262" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#1d2420">26.3 s (12.8%)</text>
+<text x="525" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#1d2420">Final dispatch &amp; first arm move</text>
+<rect x="525" y="298" width="19.0" height="22" fill="#9aa79f" rx="2"/>
+<text x="552.0" y="314" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#1d2420">9.2 s (4.5%)</text>
+<rect x="525" y="352" width="405" height="54" fill="#dce9e2" rx="3"/>
+<text x="537" y="373" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#215a49">Only 1 of 346 Python scripts (0.3%) ran OpenCV segmentation.</text>
+<text x="537" y="392" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#1d2420">Everywhere else, Fable cropped, gridded, and solved IK.</text>
+</svg>

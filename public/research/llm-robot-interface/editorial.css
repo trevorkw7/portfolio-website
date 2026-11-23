@@ -373,11 +373,11 @@ body { background: var(--paper); }
 
 /* Site integration: links back to trevorkwan.me. Article styling above is untouched. */
 .mast-id {display:inline-flex;align-items:center;gap:13px;white-space:nowrap;}
-.mast-id .brand-home {font:400 22px/1 var(--serif);letter-spacing:.09em;text-transform:lowercase;}
+.mast-id .brand-home {font:400 18px/1 ui-serif,Georgia,Cambria,'Times New Roman',Times,serif;letter-spacing:.1em;text-transform:lowercase;}
 .mast-id .brand-home:hover {color:var(--forest);}
 .mast-sep {display:block;height:18px;border-left:1px solid #a8b6ab;}
 .mast-section {font:450 15px/1 var(--sans);color:var(--muted);text-decoration:none;letter-spacing:-.01em;}
 .mast-section:hover {color:var(--forest);text-decoration:underline;}
 .paper-byline a {color:inherit;text-decoration:none;}
 .paper-byline a:hover {text-decoration:underline;}
-@media (max-width:740px){.mast-id {gap:10px;} .mast-id .brand-home {font-size:20px;} .mast-section {font-size:14px;}}
+@media (max-width:740px){.mast-id {gap:10px;} .mast-id .brand-home {font-size:17px;} .mast-section {font-size:14px;}}

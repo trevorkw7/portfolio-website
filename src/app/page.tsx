@@ -20,7 +20,7 @@ import {
   Research,
   Skills,
 } from "@/components/sections";
-import { SiteNav } from "@/components/ui";
+import { LivingFavicon, SiteNav } from "@/components/ui";
 import { useTheme } from "@/hooks/useTheme";
 
 export default function Home() {
@@ -50,6 +50,7 @@ export default function Home() {
       transition={modeTransition}
       className={`font-sans ${textClass}`}
     >
+      <LivingFavicon />
       <SiteNav mode={mode} />
       <section id="top" className="relative h-screen w-full overflow-hidden">
         <AnimatedBackground mode={mode} />

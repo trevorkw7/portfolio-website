@@ -17,6 +17,7 @@ export function useTheme() {
     // Update localStorage immediately to avoid delays
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', newTheme);
+      document.documentElement.style.background = newTheme === 'light' ? '#ffffff' : '#000000';
     }
   }, []);
 

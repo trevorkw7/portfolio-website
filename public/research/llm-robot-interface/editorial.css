@@ -381,3 +381,15 @@ body { background: var(--paper); }
 .paper-byline a {color:inherit;text-decoration:none;}
 .paper-byline a:hover {text-decoration:underline;}
 @media (max-width:740px){.mast-id {gap:10px;} .mast-id .brand-home {font-size:17px;} .mast-section {font-size:14px;}}
+
+/* Cross-page transition between the home page and the research write-ups.
+   Both sides opt in, so a same-site link fades the old page out to the new
+   page's background, then lifts the new content in. Browsers without
+   cross-document view transitions (Firefox) navigate normally. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: vt-out 220ms cubic-bezier(.4,0,1,1) both; }
+  ::view-transition-new(root) { animation: vt-in 420ms cubic-bezier(.16,1,.3,1) 120ms both; }
+}
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(10px); } }

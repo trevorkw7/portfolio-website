@@ -120,6 +120,7 @@ export const resume = {
       title: "Chasing Currents: Implementing Depth Optimization for AUV Energy Savings",
       authors: "Trevor Kwan; Raymond Young; Andrew Nager; Mark Anderson; Eric Terrill; Sophia Merrifield",
       conference: "IEEE OCEANS 2024, peer-reviewed",
+      image: "/research/chasing-currents/remus-on-pier.jpg",
       date: "2024",
       link: "https://doi.org/10.1109/OCEANS55160.2024.10754212"
     }

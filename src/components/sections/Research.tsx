@@ -9,7 +9,7 @@ export function Research({ mode }: ResearchProps) {
   const titleClass = mode === 'dark' ? 'text-white' : 'text-gray-900';
   const bodyClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-700';
   const mutedClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-500';
-  const linkClass = mode === 'dark' ? 'text-[#9ad1b7] hover:text-[#c3e6d6]' : 'text-[#215a49] hover:text-[#163b2f]';
+  const linkClass = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
   const borderClass = mode === 'dark' ? 'border-gray-700' : 'border-gray-200';
 
   return (

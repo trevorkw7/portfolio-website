@@ -11,7 +11,7 @@ export function Projects({ mode }: ProjectsProps) {
   const subtitleClass = mode === 'dark' ? 'text-gray-100' : 'text-gray-800';
   const techClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
   const descClass = mode === 'dark' ? 'text-gray-200' : 'text-gray-700';
-  const linkClass = mode === 'dark' ? 'text-[#9ad1b7] hover:text-[#c3e6d6]' : 'text-[#215a49] hover:text-[#163b2f]';
+  const linkClass = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
   
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">

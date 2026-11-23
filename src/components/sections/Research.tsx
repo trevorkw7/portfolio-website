@@ -80,12 +80,6 @@ export function Research({ mode }: ResearchProps) {
                 >
                   Code
                 </a>
-                <a
-                  href={item.data}
-                  className={`hover:underline transition-colors ${mutedClass}`}
-                >
-                  Data
-                </a>
               </div>
             </div>
           </article>

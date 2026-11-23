@@ -89,6 +89,12 @@ export const resume = {
   
   projects: [
     {
+      name: "Autonomous Home Robotics Bench",
+      tech: "Python, LeRobot, Claude agents, Computer Vision, Home Assistant",
+      description: "What it actually took to run a 100-hour, self-resetting SO-101 benchmark while at work.",
+      link: "/research/llm-robot-interface/bench.html"
+    },
+    {
       name: "Autonomous Police Car",
       tech: "ROS2, Python, Computer Vision (YOLO, OpenCV)",
       description: "Led the software development for an autonomous RC police car project, creating a ROS2 package ('robocar_visual_pursuit_pkg') to enable visual pursuit. Utilized YOLOv4-tiny on an OAK-D camera for real-time vehicle detection and tracking. Implemented adaptive PID steering control, dynamic throttle management based on tracking error, and a real-time parameter tuning interface with persistence for robust performance in chasing scenarios.",

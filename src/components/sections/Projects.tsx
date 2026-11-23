@@ -24,9 +24,10 @@ export function Projects({ mode }: ProjectsProps) {
             <h3 className={`text-xl font-semibold transition-colors ${subtitleClass}`}>
               {p.link ? (
                 <a 
-                  href={p.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href={p.link}
+                  {...(p.link.startsWith('/')
+                    ? {}
+                    : { target: '_blank', rel: 'noopener noreferrer' })}
                   className={`${linkClass} hover:underline flex items-center transition-colors`}
                 >
                   {p.name}

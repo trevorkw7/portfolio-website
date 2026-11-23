@@ -57,26 +57,18 @@
     return el;
   };
 
-  // Private hosts sometimes omit HTTP byte ranges. Acquire one seekable local copy on demand.
+  // Seek the film to a trial time. The site is served with HTTP byte ranges,
+  // so the browser can seek the network stream directly. (This used to
+  // download the whole film and swap the player to an in-memory blob when the
+  // video had not loaded yet; iOS in-app browsers cannot play blob video, so
+  // a tap on the timeline before pressing play broke the player.)
   function standalonePlayer(video) {
-    let localSource, download, revision = 0;
-    return async (time, resume) => {
+    let revision = 0;
+    return (time, resume) => {
       const request = ++revision;
-      const seekable = Array.from({length:video.seekable.length}, (_, i) =>
-        video.seekable.start(i) <= time && time <= video.seekable.end(i)).some(Boolean);
-      try {
-        if (time > 0 && !localSource && !seekable) {
-          const url = video.currentSrc || video.querySelector('source')?.src;
-          const completeURL = new URL(url, location.href);
-          completeURL.searchParams.set('whole-film', '1');
-          download ||= fetch(completeURL).then(r => { if (!r.ok) throw Error('Video unavailable'); return r.blob(); });
-          const blob = await download;
-          if (request !== revision) return;
-          localSource = URL.createObjectURL(blob);
-          video.src = localSource;
-          video.load();
-        }
-      } catch { download = undefined; }
+      // Before metadata, ask for it now; this runs inside the tap, which iOS
+      // requires before it will load media.
+      if (video.readyState < 1 && video.networkState !== 2) video.load();
       presentAt(video, time, resume, () => request === revision);
     };
   }

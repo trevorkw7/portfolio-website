@@ -20,5 +20,5 @@
 .activity-legend span { display:inline-flex; gap:5px; align-items:center; white-space:nowrap }
 .activity-legend i { display:inline-block; width:11px; height:8px; flex:none; border:1px solid #2f43363b; border-radius:1px }
 .activity-legend .activity-result-key { background:#164a80; border:0; width:2px; height:11px; margin:0 4px }
-.trial-activity .activity-readout { margin:8px 0 0; font:11px/1.4 var(--sans,system-ui,sans-serif); color:#385342 }
+.trial-activity .activity-readout { margin:8px 0 0; font:11px/1.4 var(--sans,system-ui,sans-serif); color:#385342; white-space:pre-line }
 @media(max-width:600px){.trial-activity{padding:12px 10px}.activity-body{gap:7px}.activity-row-labels{font-size:12px}.activity-legend{font-size:12px;gap:5px 10px}.trial-activity .activity-readout{font-size:12px}.activity-preview{display:none}}

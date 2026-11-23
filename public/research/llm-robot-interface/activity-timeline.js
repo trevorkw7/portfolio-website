@@ -128,7 +128,7 @@
         activePointer === null && !awaitingSeek;
       clock.textContent = briefing ? 'Trial clock starts at ' + stamp(start) : elapsed + ' / ' + stamp(group.duration_s);
       status.textContent = briefing ? 'The opening photos introduce the pilot and the target.' :
-        'Without Python · ' + labels[0] + '   /   With Python · ' + labels[1];
+        'Without Python: ' + labels[0] + '\n' + 'With Python: ' + labels[1];
       input.setAttribute('aria-valuetext', briefing ? 'Opening photographs. Trial clock has not started.' :
         elapsed+' of '+stamp(group.duration_s)+'. Without Python, '+labels[0]+'. With Python, '+labels[1]+'.');
     };
@@ -199,7 +199,7 @@
       if (event.pointerType === 'touch' || activePointer !== null) return;
       const t = pointerTime(event);
       hint.hidden = false;
-      hint.textContent = stamp(t) + ' · ' + labelsAt(t).join(' / ');
+      hint.textContent = stamp(t) + '\u2003' + labelsAt(t).join(' / ');
       hint.style.left = clamp(100 * t / group.duration_s, 22, 78) + '%';
     });
     input.addEventListener('pointerup', event => {

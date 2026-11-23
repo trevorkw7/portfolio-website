@@ -1,29 +1,51 @@
 export const resume = {
   about:
-    "I'm Trevor, a software engineer working at the intersection of real-time systems, automation, and robotics. At Amazon, I work on player UX, playback runtime components, and end-to-end automation orchestration for the Prime Video Android client. Previously, I built LLM-orchestrated ad generation and rendering pipelines at Typeface and led and published field-deployed autonomy research on energy-efficient planning for autonomous underwater vehicles at Scripps Institution of Oceanography (IEEE OCEANS 2024).",
+    "I'm Trevor, a software engineer working at the intersection of real-time systems, autonomy, and robotics. At Amazon Prime Air, I work on sensor integration and data pipelines for perception and navigation on autonomous aircraft, and I'm an M.S.E. Robotics student at Penn's GRASP Lab. Previously, I shipped playback-speed controls for the Prime Video Android player, designed LLM-orchestrated ad generation and rendering pipelines at Typeface, and led and published field-deployed autonomy research on energy-efficient planning for autonomous underwater vehicles at Scripps Institution of Oceanography (IEEE OCEANS 2024).",
 
   education: [
+    {
+      institution: "University of Pennsylvania",
+      degree: "M.S.E. Robotics, GRASP Lab",
+      date: "Aug. 2026 – Present",
+      details: ["Current Coursework: Computer Vision & Computational Photography (CIS 5810)"]
+    },
     {
       institution: "University of California, San Diego",
       degree: "B.S. Computer Engineering",
       date: "Sept. 2021 – Mar. 2025",
-      details: ["Relevant Coursework: Computer Vision, Autonomous Vehicles, Software Engineering, Circuits and Systems, Design & Analysis of Algorithms, Computer Operating Systems, Computer Architecture"]
+      details: [
+        "Provost's Honors; HKN (Engineering Honor Society)",
+        "Graduate coursework in Intelligent Systems, Robotics & Controls",
+        "Relevant Coursework: Computer Vision, Autonomous Vehicles, Software Engineering, Circuits and Systems, Design & Analysis of Algorithms, Computer Operating Systems, Computer Architecture"
+      ]
     }
   ],
   
   experience: [
     {
+      title: "Software Development Engineer – Prime Air, Amazon",
+      location: "Seattle, WA",
+      date: "Aug 2026 – Present",
+      details: [
+        "Develop vehicle software and sensor integration for perception and navigation on autonomous aircraft, along with the data pipelines for the UAV fleet that collects their training data",
+        "Automated ground-truth labeling using public FAA obstacle records and aircraft trajectories, reducing manual annotation for obstacle-detection model training"
+      ],
+    },
+    {
       title: "Software Development Engineer – Prime Video, Amazon",
       location: "Seattle, WA",
-      date: "Aug 2025 – Present",
+      date: "Aug 2025 – Aug 2026",
       details: [
-        "Developing video player features for Prime Video on Android and Fire TV devices"
+        "Owned playback-speed controls (0.75×–2×) for the Prime Video Android player end to end, from architecture design through worldwide launch, covering the UI, state management, telemetry, accessibility, and ad-handling flows and scaling to 500k+ daily users",
+        "Extended playback speed to Web, Roku, and Fire TV through a shared backend across Kotlin, Java, Rust, and TypeScript, coordinating the rollout with 5+ teams",
+        "Resolved execution and cancellation races in a production DAG-based scheduler for Android and Fire TV playback",
+        "Developed and scaled an agentic testing harness that enables computer-use agents to execute end-to-end tests from natural-language instructions before Google Play Store releases"
       ],
     },
     {
       title: "Software Engineering Intern, Typeface",
       location: "Seattle, WA",
-      date: "Jun 2025 – Sep 2025",
+      date: "Jun 2025 – Aug 2025",
       details: [
         "Worked across Ads team's full stack (TypeScript, React, Python, LangChain) building agentic AI ad pipeline from chat prompts through generative models (DALL-E 2, GPT) to platform-specific rendering for Meta and Google ads — serving major enterprise clients including Coca-Cola, Albertsons, Microsoft, and Asics",
         "Owned end-to-end Rich Layout Previews as pipeline endpoint, converting AI-generated content into platform-accurate visual previews across 5 ad formats (Meta Single Image, Carousel, Collection + Google Display, Search) with real-time editing in infinite canvas",
@@ -34,7 +56,7 @@ export const resume = {
     {
       title: "Robotics Researcher – Embedded Systems & Control, Scripps Institution of Oceanography",
       location: "San Diego, CA",
-      date: "Jun 2022 – Present",
+      date: "Jun 2022 – May 2025",
       details: [
         "Designed closed-loop controllers in ROS (Python/C++) for 100m-class AUVs, improving real-time energy efficiency by 9% via dynamic depth optimization",
         "Built embedded autonomy systems using multi-modal sensor fusion (IMU, salinity, depth), reducing manual survey efforts by over 150 hours",

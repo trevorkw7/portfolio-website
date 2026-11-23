@@ -1,16 +1,10 @@
 import React from 'react';
 import { resume } from '@/data/resume';
 
-interface SkillsProps {
-  mode?: 'dark' | 'light';
-}
-
-export function Skills({ mode = 'dark' }: SkillsProps) {
-  // Define text and background classes based on mode
-  const titleClass = mode === 'dark' ? 'text-white' : 'text-gray-900';
-  const pillClass = mode === 'dark' 
-    ? 'bg-gray-700 text-gray-200' 
-    : 'bg-gray-200 text-gray-800';
+export function Skills() {
+  // Light colours, with dark: variants for the dark theme
+  const titleClass = 'text-gray-900 dark:text-white';
+  const pillClass = 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
   
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">

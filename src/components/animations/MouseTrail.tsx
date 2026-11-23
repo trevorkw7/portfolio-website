@@ -1,548 +1,246 @@
-import React, { useRef, useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
+
+/*
+ * The hero's scribble trail. Same behaviour as before: idle, it draws a new
+ * straight stroke to a random point near the centre every 600ms; with a
+ * mouse, it follows the cursor in strokes of at least 45px; it fades away
+ * every 10s, after a long mouse session, on theme change and when "enter" is
+ * pressed.
+ *
+ * What changed is how it does it:
+ * - The canvas lives inside the hero and scrolls with it, instead of a
+ *   fixed, full-viewport layer over the whole page.
+ * - It is sized to the hero with a ResizeObserver and scaled for the screen's
+ *   pixel density, so lines are crisp on retina, and it is not wiped and
+ *   reallocated when a phone's address bar shows or hides.
+ * - One timer drives it, instead of a new two-second timer per mouse event.
+ * - Fades run on animation frames, not interval timers.
+ * - It stops completely while the hero is off screen or the tab is hidden.
+ */
+
+type Seg = { x1: number; y1: number; x2: number; y2: number };
+
+const LINE_WIDTH = 0.8;
+const MIN_LENGTH = 45;
+const AUTO_MS = 600;
+const RETRY_MS = 100;
+const START_DELAY_MS = 3000;
+const IDLE_AFTER_MOUSE_MS = 2000;
+const AUTO_CLEAR_MS = 10000;
+const FADE_MS = 450;
+const FAST_FADE_MS = 160;
 
 interface MouseTrailProps {
-  activeArea?: number;
   mode: "dark" | "light";
-  trailDuration?: number; // Duration in milliseconds before trail fades out
 }
 
-export function MouseTrail({ activeArea, mode }: MouseTrailProps) {
+declare global {
+  interface Window {
+    clearMouseTrail?: () => void;
+  }
+}
+
+export function MouseTrail({ mode }: MouseTrailProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const modeRef = useRef(mode);
+  const restartRef = useRef<(delay: number) => void>(() => {});
+  const fadeRef = useRef<(ms: number, after?: () => void) => void>(() => {});
 
-  // Ref to store the clear canvas function so it can be called from outside
-  const clearCanvasRef = useRef<() => void>(() => {});
-
-  // Keep track of whether the canvas is currently being cleared
-  const isClearing = useRef<boolean>(false);
-
-  // Track when the last mouse movement happened
-  const lastMouseActivity = useRef<number>(Date.now());
-
-  // Track if we're in auto or mouse mode
-  const isMouseActive = useRef<boolean>(false);
-
-  // Track when mouse mode started
-  const mouseActiveSince = useRef<number>(0);
-
-  // Track the current scroll position
-  const currentScrollY = useRef<number>(0);
-
-  // Track the current mode to detect changes
-  const prevModeRef = useRef<"dark" | "light">(mode);
-
-  // Track all active timers for proper cleanup
-  const activeTimers = useRef<number[]>([]);
-
-  // Store all line segments for smooth fading
-  const lineSegments = useRef<
-    { x1: number; y1: number; x2: number; y2: number; opacity: number; mode: 'dark' | 'light' }[]
-  >([]);
-
-  // Use direct refs for current and previous positions
-  const prevPos = useRef<{ x?: number; y?: number }>({
-    x: undefined,
-    y: undefined,
-  });
-  const curPos = useRef<{ x?: number; y?: number }>({
-    x: undefined,
-    y: undefined,
-  });
-
-  // Expose clearCanvas method to parent components
+  // Theme change: fade the current strokes, then start again in the new colour.
   useEffect(() => {
-    // Define the window interface extension
-    interface WindowWithClearMouseTrail extends Window {
-      clearMouseTrail?: () => void;
-    }
-
-    // Add the clear method to the window object so it can be called from outside
-    const windowWithTrail = window as WindowWithClearMouseTrail;
-    windowWithTrail.clearMouseTrail = () => {
-      if (clearCanvasRef.current) {
-        clearCanvasRef.current();
-      }
-    };
-
-    return () => {
-      // Clean up the global reference
-      delete (window as WindowWithClearMouseTrail).clearMouseTrail;
-    };
-  }, []);
+    if (modeRef.current === mode) return;
+    modeRef.current = mode;
+    fadeRef.current(FAST_FADE_MS, () => restartRef.current(800));
+  }, [mode]);
 
   useEffect(() => {
-    setIsMounted(true);
-    return () => {}; 
-  }, []);
-
-  // Main effect for trail rendering - only runs when component is mounted
-  useEffect(() => {
-    // Don't run until component is mounted on client
-    if (!isMounted) return;
-
-    // Check if mode has changed
-    const modeChanged = prevModeRef.current !== mode;
-    prevModeRef.current = mode;
-
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
 
-    // Trail rendering constants
-    const LINE_WIDTH = 0.8;
-    const MIN_LENGTH = 45; // Minimum distance to draw a line
-    const AUTO_CLEAR_TIMEOUT = 10000; // Auto-clear trails after 10 seconds
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let w = 0;
+    let h = 0;
+    let segs: Seg[] = [];
+    let alpha = 1;
+    let prev: { x: number; y: number } | null = null;
+    let timer = 0;
+    let fadeFrame = 0;
+    let visible = true;
+    let mouseActive = false;
+    let lastMouse = 0;
+    let mouseSince = 0;
+    let lastClear = performance.now();
 
-    // Fixed constants for auto mode
-    const AUTO_LINE_INTERVAL = 600; // Consistent time between auto line draws
-    const AUTO_LINE_OPACITY = 1.0; // Consistent opacity for auto lines
+    const color = () => (modeRef.current === "dark" ? "238,238,238" : "51,51,51");
 
-    let w = window.innerWidth,
-      h = window.innerHeight;
+    const redraw = () => {
+      ctx.clearRect(0, 0, w, h);
+      if (!segs.length || alpha <= 0) return;
+      ctx.strokeStyle = `rgba(${color()},${alpha})`;
+      ctx.lineWidth = LINE_WIDTH;
+      ctx.lineCap = "butt";
+      ctx.beginPath();
+      for (const s of segs) {
+        ctx.moveTo(s.x1, s.y1);
+        ctx.lineTo(s.x2, s.y2);
+      }
+      ctx.stroke();
+    };
 
     const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-
-      // Clear canvas on resize
-      ctx.clearRect(0, 0, w, h);
-
-      // Reset positions on resize
-      prevPos.current = { x: undefined, y: undefined };
-      curPos.current = { x: undefined, y: undefined };
-    };
-
-    // Initial resize
-    resize();
-    window.addEventListener("resize", resize);
-
-    // Calculate distance between two points
-    const calcDist = (
-      x1: number,
-      y1: number,
-      x2: number,
-      y2: number
-    ): number => {
-      const dx = x2 - x1;
-      const dy = y2 - y1;
-      return Math.sqrt(dx * dx + dy * dy);
-    };
-
-    // Render function that draws all stored line segments with their current opacity
-    const renderLines = () => {
-      // Clear canvas first
-      ctx.clearRect(0, 0, w, h);
-
-      // Draw all line segments with their current opacity
-      lineSegments.current.forEach((segment) => {
-        // Use consistent color values with segment opacity
-        const color =
-          segment.mode === "dark"
-            ? `rgba(238, 238, 238, ${segment.opacity})`
-            : `rgba(51, 51, 51, ${segment.opacity})`;
-        ctx.strokeStyle = color;
-        ctx.lineWidth = LINE_WIDTH;
-        ctx.lineCap = "butt";
-
-        ctx.beginPath();
-        ctx.moveTo(segment.x1, segment.y1);
-        ctx.lineTo(segment.x2, segment.y2);
-        ctx.stroke();
-      });
-    };
-
-    // Clear trails with a smooth fade animation
-    const clearCanvas = (fastFade = false) => {
-      if (lineSegments.current.length === 0) return;
-
-      // Start the fade animation
-      let fadeStep = 0;
-      // Use fewer steps and faster interval for scroll-triggered fades
-      const FADE_STEPS = fastFade ? 5 : 15;
-      const FADE_INTERVAL = fastFade ? 15 : 30;
-      
-      const fadeInterval = setInterval(() => {
-        fadeStep++;
-
-        // Reduce opacity of all line segments (faster reduction for scroll-triggered fades)
-        lineSegments.current.forEach((segment) => {
-          segment.opacity = Math.max(0, segment.opacity - (fastFade ? 3 : 1) / FADE_STEPS);
-        });
-
-        // Redraw all lines with updated opacity
-        renderLines();
-
-        // Remove fully transparent lines
-        lineSegments.current = lineSegments.current.filter(
-          (segment) => segment.opacity > 0
-        );
-
-        // End the animation when complete
-        if (fadeStep >= FADE_STEPS || lineSegments.current.length === 0) {
-          clearInterval(fadeInterval);
-          ctx.clearRect(0, 0, w, h);
-          lineSegments.current = [];
-
-          // Reset positions
-          prevPos.current = { x: undefined, y: undefined };
-          curPos.current = { x: undefined, y: undefined };
-        }
-      }, FADE_INTERVAL);
-    };
-
-    // Store the clear function in the ref so it can be called from outside
-    clearCanvasRef.current = clearCanvas;
-
-    // Fixed interval clearing function that runs every 10 seconds
-    const startPeriodicClear = () => {
-      // Create an interval that clears the canvas every 10 seconds
-      const periodicClearInterval = setInterval(() => {
-        // Skip clearing if in mouse mode
-        if (isMouseActive.current) {
-          return;
-        }
-
-        // Only clear if not already in the process of clearing
-        if (!isClearing.current) {
-          isClearing.current = true;
-          clearCanvas();
-
-          // Reset the clearing flag after a short delay
-          setTimeout(() => {
-            isClearing.current = false;
-          }, 100);
-        }
-      }, AUTO_CLEAR_TIMEOUT);
-
-      return periodicClearInterval;
-    };
-
-    // Function to check if we're in the hero section
-    const isInHeroSection = () => {
-      // If activeArea is not defined, allow trails everywhere
-      if (activeArea === undefined) return true;
-      // Only create random trails when we're in the hero section
-      return currentScrollY.current <= activeArea;
-    };
-
-    // Start the periodic clearing
-    const periodicClearInterval = startPeriodicClear();
-
-    // Draw function for creating trail segments
-    const draw = () => {
-      if (curPos.current.x !== undefined && curPos.current.y !== undefined) {
-        if (prevPos.current.x === undefined) {
-          prevPos.current = { ...curPos.current };
-          return false;
-        }
-
-        const dist = calcDist(
-          prevPos.current.x!,
-          prevPos.current.y!,
-          curPos.current.x,
-          curPos.current.y
-        );
-
-        if (dist > MIN_LENGTH) {
-          // Set line style
-          ctx.strokeStyle = mode === "dark" ? "rgba(238, 238, 238, 1)" : "rgba(51, 51, 51, 1)";
-          ctx.lineWidth = LINE_WIDTH;
-          ctx.lineCap = "butt";
-
-          // Draw the line
-          ctx.beginPath();
-          ctx.moveTo(prevPos.current.x!, prevPos.current.y!);
-          ctx.lineTo(curPos.current.x, curPos.current.y);
-          ctx.stroke();
-
-          // Store the line segment for fading
-          // Use the consistent opacity for auto mode
-          const lineOpacity = !isMouseActive.current ? AUTO_LINE_OPACITY : 1.0;
-
-          lineSegments.current.push({
-            x1: prevPos.current.x!,
-            y1: prevPos.current.y!,
-            x2: curPos.current.x,
-            y2: curPos.current.y,
-            opacity: lineOpacity,
-            mode: mode,
-          });
-
-          // Update previous position
-          prevPos.current = { ...curPos.current };
-          return true;
-        } else {
-          return false;
-        }
-      }
-      return false;
-    };
-
-    // Random line drawing function
-    let randTimer: number | null = null;
-
-    // Enhanced timer management system
-    const registerTimer = (timerId: number) => {
-      activeTimers.current.push(timerId);
-      return timerId;
-    };
-
-    const clearTimer = (timerId: number) => {
-      window.clearTimeout(timerId);
-      activeTimers.current = activeTimers.current.filter(
-        (id) => id !== timerId
-      );
-    };
-
-    // Clear any existing timer before setting up a new one
-    const clearExistingTimer = () => {
-      if (randTimer) {
-        clearTimer(randTimer);
-        randTimer = null;
-      }
-    };
-
-    // Clear all active timers
-    const clearAllTimers = () => {
-      activeTimers.current.forEach((id) => window.clearTimeout(id));
-      activeTimers.current = [];
-      randTimer = null;
-    };
-
-    // Make sure to clear any existing timers when component mounts
-    clearAllTimers();
-
-    const drawRand = () => {
-      // Skip random drawing if we're currently in a clearing animation
-      if (isClearing.current) {
-        clearExistingTimer();
-        randTimer = registerTimer(window.setTimeout(drawRand, 1000));
-        return;
-      }
-
-      // Skip random drawing if mouse has been active recently (within 2 seconds)
-      const now = Date.now();
-      const timeSinceLastMouseMove = now - lastMouseActivity.current;
-
-      // Skip if we're not in the hero section
-      if (!isInHeroSection()) {
-        clearExistingTimer();
-        randTimer = registerTimer(window.setTimeout(drawRand, 1000));
-        return;
-      }
-
-      if (isMouseActive.current || timeSinceLastMouseMove < 2000) {
-        // Check again after a short delay
-        clearExistingTimer();
-        randTimer = registerTimer(window.setTimeout(drawRand, 1000));
-        return;
-      }
-
-      // Center of the canvas
-      const center = {
-        x: Math.floor(w / 2),
-        y: Math.floor(h / 2),
-      };
-
-      // Box constraints for random points
-      const offset = {
-        x: (w * 0.5) / 2,
-        y: (h * 0.5) / 2,
-      };
-
-      // Generate random point within constraints
-      const getRandomInt = (min: number, max: number) => {
-        return Math.floor(Math.random() * (max - min) + min);
-      };
-
-      const checkBounds = (value: number, max: number) => {
-        if (value > max) return max;
-        if (value < 0) return 0;
-        return value;
-      };
-
-      // Generate random position
-      let randX = getRandomInt(center.x - offset.x, center.x + offset.x);
-      let randY = getRandomInt(center.y - offset.y, center.y + offset.y);
-
-      // Ensure within bounds
-      randX = checkBounds(randX, w);
-      randY = checkBounds(randY, h);
-
-      // Update current position
-      curPos.current = { x: randX, y: randY };
-
-      // Draw and schedule next with consistent timing
-      if (draw()) {
-        // Use fixed interval for consistent timing in auto mode
-        clearExistingTimer();
-        randTimer = registerTimer(
-          window.setTimeout(drawRand, AUTO_LINE_INTERVAL)
-        );
-      } else {
-        // If not drawn, try again after a short delay
-        clearExistingTimer();
-        randTimer = registerTimer(window.setTimeout(drawRand, 100));
-      }
-    };
-
-    // If mode changed, perform a complete reset
-    if (modeChanged) {
-      // Clear all timers
-      clearAllTimers();
-
-      // Reset all state
-      lineSegments.current = [];
-      prevPos.current = { x: undefined, y: undefined };
-      curPos.current = { x: undefined, y: undefined };
-      isMouseActive.current = false;
-
-      // Clear the canvas immediately
-      ctx.clearRect(0, 0, w, h);
-      isClearing.current = true;
-
-      // Wait for a moment before starting again
-      const resetTimer = window.setTimeout(() => {
-        isClearing.current = false;
-
-        // Only start drawing again if we're in the hero section
-        if (isInHeroSection()) {
-          randTimer = registerTimer(window.setTimeout(drawRand, 1000));
-        }
-      }, 800); // Longer delay to ensure complete reset
-
-      activeTimers.current.push(resetTimer);
-    } else if (isInHeroSection() && !randTimer) {
-      // Start random drawing after a delay, but only if we're in the hero section
-      // and we don't already have a timer running
-      randTimer = registerTimer(window.setTimeout(drawRand, 3000));
-    }
-
-    // Handle scroll events to clear trails when scrolling
-    const handleScroll = () => {
-      // Update current scroll position
-      currentScrollY.current = window.scrollY;
-
-      // Clear trails when scrolling with fast fade
-      if (!isClearing.current) {
-        isClearing.current = true;
-        clearCanvas(true); // Use fast fade for scroll-triggered clearing
-
-        registerTimer(
-          window.setTimeout(() => {
-            isClearing.current = false;
-          }, 50) // Shorter reset time for scroll clearing
-        );
-      }
-
-      // Restart random drawing only if we're in the hero section
-      if (isInHeroSection() && !isClearing.current) {
-        clearExistingTimer();
-        randTimer = registerTimer(window.setTimeout(drawRand, 1000));
-      }
-    };
-
-    // Initialize scroll position
-    currentScrollY.current = window.scrollY;
-
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Mouse move event for direct tracking
-    const move = (e: MouseEvent) => {
-      // Only track movement inside the designated area
-      if (activeArea !== undefined && e.clientY > activeArea) return;
-
-      // Update last mouse activity time and set active flag
-      const now = Date.now();
-      lastMouseActivity.current = now;
-
-      // If this is the first mouse movement after auto mode, record the time
-      if (!isMouseActive.current) {
-        mouseActiveSince.current = now;
-      }
-
-      isMouseActive.current = true;
-
-      // If we have a random timer, clear it
-      clearExistingTimer();
-
-      // Get mouse position relative to canvas
       const rect = canvas.getBoundingClientRect();
-      curPos.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
-
-      // Draw immediately
-      draw();
-
-      // Set a timer to reset mouse active flag after 2 seconds of inactivity
-      setTimeout(() => {
-        const now = Date.now();
-        const timeSinceLastMove = now - lastMouseActivity.current;
-
-        if (timeSinceLastMove >= 2000) {
-          // Calculate how long we've been in mouse mode
-          const timeInMouseMode = now - mouseActiveSince.current;
-          const wasLongMouseSession = timeInMouseMode >= AUTO_CLEAR_TIMEOUT;
-
-          // Switch back to auto mode
-          isMouseActive.current = false;
-
-          // If we were in mouse mode for more than 10 seconds, clear the trails
-          if (wasLongMouseSession && !isClearing.current) {
-            isClearing.current = true;
-            clearCanvas();
-
-            const clearingTimer = window.setTimeout(() => {
-              isClearing.current = false;
-            }, 100);
-            activeTimers.current.push(clearingTimer);
-          }
-
-          // Restart random drawing only if we're in the hero section
-          if (isInHeroSection()) {
-            clearExistingTimer();
-            randTimer = registerTimer(window.setTimeout(drawRand, 1000));
-          }
-        }
-      }, 2000);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const nw = Math.round(rect.width);
+      const nh = Math.round(rect.height);
+      if (nw === w && nh === h && canvas.width === Math.round(nw * dpr)) return;
+      w = nw;
+      h = nh;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      redraw();
     };
 
-    window.addEventListener("mousemove", move);
+    // Try to add a stroke from the previous point to (x, y).
+    const stroke = (x: number, y: number): boolean => {
+      if (!prev) {
+        prev = { x, y };
+        return false;
+      }
+      if (Math.hypot(x - prev.x, y - prev.y) <= MIN_LENGTH) return false;
+      segs.push({ x1: prev.x, y1: prev.y, x2: x, y2: y });
+      prev = { x, y };
+      if (alpha < 1) alpha = 1;
+      redraw();
+      return true;
+    };
 
-    // Return cleanup function
-    return () => {
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("scroll", handleScroll);
+    const clearNow = () => {
+      cancelAnimationFrame(fadeFrame);
+      fadeFrame = 0;
+      segs = [];
+      prev = null;
+      alpha = 1;
+      ctx.clearRect(0, 0, w, h);
+    };
 
-      // Clear any pending timers
-      if (randTimer) {
-        window.clearTimeout(randTimer);
-        randTimer = null;
+    const fade = (ms: number, after?: () => void) => {
+      if (!segs.length) {
+        clearNow();
+        after?.();
+        return;
+      }
+      cancelAnimationFrame(fadeFrame);
+      const start = performance.now();
+      const from = alpha;
+      const step = (t: number) => {
+        alpha = Math.max(0, from * (1 - (t - start) / ms));
+        redraw();
+        if (alpha > 0) {
+          fadeFrame = requestAnimationFrame(step);
+        } else {
+          clearNow();
+          after?.();
+        }
+      };
+      fadeFrame = requestAnimationFrame(step);
+    };
+    fadeRef.current = fade;
+
+    const schedule = (delay: number) => {
+      window.clearTimeout(timer);
+      if (!visible || reduced) return;
+      timer = window.setTimeout(tick, delay);
+    };
+    restartRef.current = schedule;
+
+    // The single timer: auto-draws when idle, notices when the mouse stops.
+    const tick = () => {
+      timer = 0;
+      const now = performance.now();
+      if (fadeFrame) return schedule(RETRY_MS * 5);
+
+      if (mouseActive) {
+        if (now - lastMouse < IDLE_AFTER_MOUSE_MS) return schedule(IDLE_AFTER_MOUSE_MS - (now - lastMouse));
+        mouseActive = false;
+        if (now - mouseSince >= AUTO_CLEAR_MS) {
+          lastClear = now;
+          return fade(FADE_MS, () => schedule(1000));
+        }
+        return schedule(1000);
       }
 
-      // Clear the periodic interval
-      clearInterval(periodicClearInterval);
+      if (now - lastClear >= AUTO_CLEAR_MS && segs.length) {
+        lastClear = now;
+        return fade(FADE_MS, () => schedule(1000));
+      }
 
-      // Reset all state
-      lineSegments.current = [];
-      prevPos.current = { x: undefined, y: undefined };
-      curPos.current = { x: undefined, y: undefined };
-      isMouseActive.current = false;
+      const x = w / 2 + (Math.random() - 0.5) * (w / 2);
+      const y = h / 2 + (Math.random() - 0.5) * (h / 2);
+      schedule(stroke(x, y) ? AUTO_MS : RETRY_MS);
     };
-  }, [activeArea, mode, isMounted]);
 
-  // Only render the canvas on the client side to avoid hydration errors
-  if (!isMounted) return null;
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse" || !visible) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (y < 0 || y > h) return;
+      const now = performance.now();
+      if (!mouseActive) {
+        mouseActive = true;
+        mouseSince = now;
+      }
+      lastMouse = now;
+      stroke(x, y);
+      // One pending check for "mouse has stopped", not one timer per event.
+      if (!timer) schedule(IDLE_AFTER_MOUSE_MS);
+    };
+
+    const setVisible = (v: boolean) => {
+      if (v === visible) return;
+      visible = v;
+      if (!v) {
+        window.clearTimeout(timer);
+        timer = 0;
+        clearNow();
+      } else {
+        lastClear = performance.now();
+        schedule(1000);
+      }
+    };
+
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+    const io = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    io.observe(canvas);
+    const onVis = () => setVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", onVis);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.clearMouseTrail = () => fade(FADE_MS);
+
+    resize();
+    schedule(START_DELAY_MS);
+
+    return () => {
+      ro.disconnect();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("pointermove", onMove);
+      window.clearTimeout(timer);
+      cancelAnimationFrame(fadeFrame);
+      delete window.clearMouseTrail;
+    };
+  }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-10"
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full pointer-events-none z-10"
     />
   );
 }

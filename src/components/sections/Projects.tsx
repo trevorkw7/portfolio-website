@@ -1,17 +1,13 @@
 import React from 'react';
 import { resume } from '@/data/resume';
 
-interface ProjectsProps {
-  mode: 'dark' | 'light';
-}
-
-export function Projects({ mode }: ProjectsProps) {
-  // Define text classes based on mode
-  const titleClass = mode === 'dark' ? 'text-white' : 'text-gray-900';
-  const subtitleClass = mode === 'dark' ? 'text-gray-100' : 'text-gray-800';
-  const techClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
-  const descClass = mode === 'dark' ? 'text-gray-200' : 'text-gray-700';
-  const linkClass = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
+export function Projects() {
+  // Light colours, with dark: variants for the dark theme
+  const titleClass = 'text-gray-900 dark:text-white';
+  const subtitleClass = 'text-gray-800 dark:text-gray-100';
+  const techClass = 'text-gray-600 dark:text-gray-300';
+  const descClass = 'text-gray-700 dark:text-gray-200';
+  const linkClass = 'text-green-600 hover:text-green-800 dark:text-blue-400 dark:hover:text-blue-300';
   
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">

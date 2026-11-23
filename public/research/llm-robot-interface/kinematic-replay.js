@@ -349,19 +349,34 @@
     btnPlay.textContent = playing ? 'Pause' : 'Play';
   }
 
+  // The replay only runs while it is playing, on screen, and the tab is
+  // visible. It used to redraw both canvases every frame for the whole visit,
+  // including while the reader scrolled past it.
+  let onScreen = false;
+  let frameId = 0;
   function loop(ts) {
-    if (playing) {
-      if (!lastTs) lastTs = ts;
-      const dt = Math.min(0.05, (ts - lastTs) / 1000);
-      lastTs = ts;
-      tPos += dt * 1.15;
-      if (tPos >= N - 1) tPos = 0;
-      renderAll();
-    } else {
-      lastTs = 0;
-    }
-    requestAnimationFrame(loop);
+    frameId = 0;
+    if (!playing || !onScreen || document.hidden) { lastTs = 0; return; }
+    if (!lastTs) lastTs = ts;
+    const dt = Math.min(0.05, (ts - lastTs) / 1000);
+    lastTs = ts;
+    tPos += dt * 1.15;
+    if (tPos >= N - 1) tPos = 0;
+    renderAll();
+    frameId = requestAnimationFrame(loop);
   }
+  function wake() {
+    if (!frameId && playing && onScreen && !document.hidden) frameId = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; wake(); }, { rootMargin: '100px' }).observe(root);
+  } else {
+    onScreen = true;
+  }
+  document.addEventListener('visibilitychange', wake);
+  // Redraw at most once per frame while resizing.
+  let resizeId = 0;
+  const onResize = () => { if (!resizeId) resizeId = requestAnimationFrame(() => { resizeId = 0; renderAll(); }); };
 
   // Drag-to-orbit on either canvas rotates both 3D views together
   let dragging = false, lx = 0, ly = 0;
@@ -384,14 +399,15 @@
   btnPlay.addEventListener('click', () => {
     playing = !playing;
     renderAll();
+    wake();
   });
   scrub.addEventListener('input', () => {
     playing = false;
     tPos = Number(scrub.value);
     renderAll();
   });
-  window.addEventListener('resize', renderAll, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
 
   renderAll();
-  requestAnimationFrame(loop);
+  wake();
 })();

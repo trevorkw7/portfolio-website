@@ -208,7 +208,7 @@ body { background: var(--paper); }
 .phone-frames{margin:2rem auto}.phone-frames img{display:block;width:100%;height:auto}.methods-reader{max-width:760px}.methods-reader section{margin:2.8rem 0}.methods-reader table{border-collapse:collapse;width:100%;font-size:.9em;margin:1.5em 0}.methods-reader caption{text-align:left;font-weight:600;margin-bottom:.6rem}.methods-reader :is(th,td){text-align:left;vertical-align:top;border-bottom:1px solid #c9cfca;padding:.6em .45em}.methods-reader :is(td,th):first-child{padding-left:0}.literal-task blockquote{border-left:2px solid #c9cfca;margin:1rem 0;padding:.1rem 1rem;font-size:.93em;line-height:1.6}.pair-controls [hidden]{display:none!important}
 
 /* Unified coherent reading shell with sticky Contents sidebar (replaces overhanging hero jump) */
-.read-progress {position:fixed;top:0;left:0;height:2px;width:0;background:var(--forest);z-index:20;pointer-events:none;transition:width 80ms linear;}
+.read-progress {position:fixed;top:0;left:0;height:2px;width:100%;background:var(--forest);z-index:20;pointer-events:none;transform:scaleX(0);transform-origin:0 50%;will-change:transform;}
 .plate figcaption, .phone-frames figcaption {border-left:0;padding-left:0;max-width:705px;margin-top:9px;font:400 15px/1.5 var(--sans);color:#4b5750;}
 .plate img[src$=".svg"] {border:1px solid var(--rule);border-radius:6px;background:var(--paper);}
 .study-hero img {aspect-ratio:16/10;object-fit:cover;object-position:center 52%;border-radius:4px;}

@@ -24,7 +24,7 @@ export function PageExit() {
       if (!href.startsWith("/research/") || reduced) return;
 
       e.preventDefault();
-      const color = document.documentElement.style.background || "#000000";
+      const color = getComputedStyle(document.documentElement).backgroundColor;
       try {
         sessionStorage.setItem("arrive-from", color);
       } catch {}

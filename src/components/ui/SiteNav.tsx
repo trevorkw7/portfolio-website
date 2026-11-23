@@ -2,10 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 
-interface SiteNavProps {
-  mode: "dark" | "light";
-}
-
 const links = [
   { label: "about", href: "#about" },
   { label: "experience", href: "#experience" },
@@ -18,7 +14,7 @@ const links = [
  * is repeated in the research write-ups' masthead, so the two differently
  * styled surfaces share one identity.
  */
-export function SiteNav({ mode }: SiteNavProps) {
+export function SiteNav() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -33,11 +29,9 @@ export function SiteNav({ mode }: SiteNavProps) {
   }, []);
 
   const surface =
-    mode === "dark"
-      ? "bg-black/80 border-gray-800 text-gray-300"
-      : "bg-white/85 border-gray-200 text-gray-600";
-  const wordmark = mode === "dark" ? "text-white" : "text-gray-900";
-  const hover = mode === "dark" ? "hover:text-white" : "hover:text-gray-900";
+    'bg-white/85 border-gray-200 text-gray-600 dark:bg-black/80 dark:border-gray-800 dark:text-gray-300';
+  const wordmark = 'text-gray-900 dark:text-white';
+  const hover = 'hover:text-gray-900 dark:hover:text-white';
 
   return (
     <nav

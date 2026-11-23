@@ -1,72 +1,58 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-type Theme = 'dark' | 'light';
+export type Theme = "dark" | "light";
 
-// Create a singleton for theme state to avoid redundant calculations
-let cachedTheme: Theme | null = null;
-let themeInitialized = false;
+const read = (): Theme =>
+  typeof document !== "undefined" && document.documentElement.dataset.theme === "light"
+    ? "light"
+    : "dark";
 
+/**
+ * The theme lives on <html data-theme>, set before first paint by the script
+ * in layout.tsx, and all colours are CSS keyed on it. This hook only mirrors
+ * it into React for the few things that need it in JavaScript (the trail
+ * canvas colour, the toggle) and changes it.
+ */
 export function useTheme() {
-  // Always start with 'dark' on the server to avoid hydration mismatch
-  const [theme, setInternalTheme] = useState<Theme>(cachedTheme || 'dark');
+  // Server and first client render agree on "dark"; the effect then syncs to
+  // the real value. Nothing visible depends on this state, so no flash.
+  const [theme, setState] = useState<Theme>("dark");
 
-  // Memoized theme setter to avoid recreating on each render
-  const setTheme = useCallback((newTheme: Theme) => {
-    cachedTheme = newTheme;
-    setInternalTheme(newTheme);
-    // Update localStorage immediately to avoid delays
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', newTheme);
-      document.documentElement.style.background = newTheme === 'light' ? '#ffffff' : '#000000';
-    }
+  useEffect(() => {
+    setState(read());
+
+    // Follow the system setting only while the visitor hasn't chosen one.
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem("theme");
+    } catch {}
+    if (stored) return;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = (e: MediaQueryListEvent) => {
+      const t: Theme = e.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+      setState(t);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  // Initialize theme only once on client-side
-  useEffect(() => {
-    if (typeof window === 'undefined' || themeInitialized) return;
-    
-    // Function to determine initial theme
-    const initializeTheme = () => {
-      // Check localStorage first
-      const savedTheme = localStorage.getItem('theme') as Theme;
-      if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
-        setTheme(savedTheme);
-        return;
-      }
-      
-      // If no saved preference, check system preference
-      const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
+  const setTheme = useCallback((t: Theme) => {
+    const apply = () => {
+      document.documentElement.dataset.theme = t;
+      setState(t);
     };
-
-    // Use requestAnimationFrame for better performance
-    requestAnimationFrame(() => {
-      initializeTheme();
-      themeInitialized = true;
-    });
-  }, [setTheme]);
-
-  // Listen for system preference changes - only if no user preference
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const hasStoredPreference = localStorage.getItem('theme') !== null;
-    if (hasStoredPreference) return;
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const handleChange = (e: MediaQueryListEvent) => {
-      setTheme(e.matches ? 'dark' : 'light');
-    };
-    
-    // Add listener for changes
-    mediaQuery.addEventListener('change', handleChange);
-    
-    // Clean up
-    return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-    };
-  }, [setTheme]);
+    try {
+      localStorage.setItem("theme", t);
+    } catch {}
+    // Cross-fade a snapshot of the old theme into the new one. The browser
+    // does this on the GPU without restyling anything mid-animation, unlike
+    // transitioning the colours of every element on the page.
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+    if (doc.startViewTransition && !reduced) doc.startViewTransition(apply);
+    else apply();
+  }, []);
 
   return { theme, setTheme };
 }

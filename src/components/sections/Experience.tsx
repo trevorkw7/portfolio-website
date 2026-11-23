@@ -1,22 +1,15 @@
 import React from 'react';
 import { resume } from '@/data/resume';
-import { motion } from 'framer-motion'; 
 import { ArrowUpRightIcon } from '@heroicons/react/20/solid'; 
 
-interface ExperienceProps {
-  mode: 'dark' | 'light';
-}
-
 // Helper function to parse markdown-style links in text
-function parseTextWithLinks(text: string, mode: 'dark' | 'light') {
+function parseTextWithLinks(text: string) {
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   const parts: (string | React.ReactElement)[] = [];
   let lastIndex = 0;
   let match;
 
-  const linkClass = mode === 'dark'
-    ? 'text-blue-400 hover:text-blue-300 underline'
-    : 'text-green-600 hover:text-green-800 underline';
+  const linkClass = 'text-green-600 hover:text-green-800 underline dark:text-blue-400 dark:hover:text-blue-300 dark:underline';
 
   while ((match = linkRegex.exec(text)) !== null) {
     // Add text before the link
@@ -48,14 +41,14 @@ function parseTextWithLinks(text: string, mode: 'dark' | 'light') {
   return parts.length > 0 ? parts : text;
 }
 
-export function Experience({ mode }: ExperienceProps) {
-  // Define text classes based on mode
-  const titleClass = mode === 'dark' ? 'text-white' : 'text-gray-900';
-  const subtitleClass = mode === 'dark' ? 'text-gray-100' : 'text-gray-800';
-  const detailClass = mode === 'dark' ? 'text-gray-300' : 'text-gray-700';
-  const dateClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-500';
-  const locationClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-600';
-  const linkIconColor = mode === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-green-600 hover:text-green-800';
+export function Experience() {
+  // Light colours, with dark: variants for the dark theme
+  const titleClass = 'text-gray-900 dark:text-white';
+  const subtitleClass = 'text-gray-800 dark:text-gray-100';
+  const detailClass = 'text-gray-700 dark:text-gray-300';
+  const dateClass = 'text-gray-500 dark:text-gray-400';
+  const locationClass = 'text-gray-600 dark:text-gray-400';
+  const linkIconColor = 'text-green-600 hover:text-green-800 dark:text-blue-400 dark:hover:text-blue-300';
 
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">
@@ -73,23 +66,15 @@ export function Experience({ mode }: ExperienceProps) {
                 {exp.title}
                 {/* Conditionally render based on exp.link */}
                 {exp.link && (
-                  <motion.a
+                  <a
                     href={exp.link} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`absolute top-1 right-0 ${linkIconColor}`}
+                    className={`absolute top-1 right-0 transition-transform duration-150 hover:scale-110 ${linkIconColor}`}
                     aria-label={`Visit ${exp.title.split(',')[0]} website`} 
-                    initial={{ opacity: 0, y: 5 }} 
-                    whileInView={{ 
-                      opacity: 1, 
-                      y: 0, 
-                      transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } 
-                    }}
-                    whileHover={{ scale: 1.1, transition: { duration: 0.1 } }} 
-                    viewport={{ once: true, amount: 0.5 }} 
                   >
                     <ArrowUpRightIcon className="h-5 w-5" />
-                  </motion.a>
+                  </a>
                 )}
               </h3>
               <div className="flex justify-between items-center">
@@ -105,7 +90,7 @@ export function Experience({ mode }: ExperienceProps) {
               <ul className="list-disc list-inside mt-2">
                 {exp.details.map((d, j) => (
                   <li key={j} className={`transition-colors ${detailClass}`}>
-                    {parseTextWithLinks(d, mode)}
+                    {parseTextWithLinks(d)}
                   </li>
                 ))}
               </ul>

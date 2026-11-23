@@ -11,7 +11,7 @@
     if (bar) {
       const h = document.documentElement.scrollHeight - window.innerHeight;
       const pct = h > 0 ? Math.min(100, Math.max(0, (window.scrollY / h) * 100)) : 0;
-      bar.style.width = pct.toFixed(1) + '%';
+      bar.style.transform = 'scaleX(' + (pct / 100).toFixed(4) + ')';
     }
     if (!targets.length) return;
     const atBottom =

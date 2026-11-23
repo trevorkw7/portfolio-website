@@ -1,16 +1,7 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
 
-// Define the window interface extension for the clearMouseTrail method
-declare global {
-  interface Window {
-    clearMouseTrail?: () => void;
-  }
-}
-
-// Import components
 import { AnimatedBackground, MouseTrail } from "@/components/animations";
 import {
   About,
@@ -24,129 +15,77 @@ import { LivingFavicon, PageExit, SiteNav } from "@/components/ui";
 import { useTheme } from "@/hooks/useTheme";
 
 export default function Home() {
-  const { theme: mode, setTheme: setMode } = useTheme();
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const isClient = typeof window !== "undefined";
-  const heroHeight = isClient ? window.innerHeight : 0;
+  const { theme, setTheme } = useTheme();
+  const aboutRef = useRef<HTMLElement>(null);
 
-  const textClass = mode === "dark" ? "text-white" : "text-gray-900";
-  const bgColor = mode === "dark" ? "#000000" : "#ffffff";
-
-  // Define a responsive transition for mode changes - faster on mobile
-  const modeTransition = useMemo(() => {
-    // Check if we're on mobile
-    const isMobile = isClient && window.innerWidth < 768;
-    
-    return {
-      duration: isMobile ? 0.4 : 0.8, // Faster transition on mobile
-      ease: [0.16, 1, 0.3, 1], // Custom bezier curve for Apple-like smoothness
-    };
-  }, [isClient]);
+  // Colours come from CSS keyed on <html data-theme>, which is set before the
+  // first paint; the hero entrance is CSS too, so nothing here waits for
+  // JavaScript before it can be seen.
+  const ink = "text-gray-900 dark:text-white";
 
   return (
-    <motion.div
-      initial={false}
-      animate={{ backgroundColor: bgColor }}
-      transition={modeTransition}
-      className={`font-sans ${textClass}`}
-    >
+    <div className={`font-sans ${ink}`}>
       <LivingFavicon />
       <PageExit />
-      <SiteNav mode={mode} />
+      <SiteNav />
       <section id="top" className="relative h-screen w-full overflow-hidden">
-        <AnimatedBackground mode={mode} />
-        {isClient && (
-          <MouseTrail activeArea={heroHeight} mode={mode} trailDuration={500} />
-        )}
+        <AnimatedBackground />
+        <MouseTrail mode={theme} />
         <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className={`text-5xl md:text-6xl font-serif lowercase tracking-widest drop-shadow-lg ${textClass}`}
-          >
+          <h1 className="hero-in text-5xl md:text-6xl font-serif lowercase tracking-widest drop-shadow-lg">
             trevor kwan
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className={`mt-4 text-lg drop-shadow-sm ${textClass}`}
-          >
+          </h1>
+          <p className="fade-in mt-4 text-lg drop-shadow-sm" style={{ animationDelay: "0.2s" }}>
             software engineer · robotics researcher · photographer
-          </motion.p>
-          <motion.div
-            onClick={() => setMode(mode === "dark" ? "light" : "dark")}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-2 text-sm cursor-pointer animate-pulse"
+          </p>
+          <button
+            type="button"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="fade-in mt-2 text-sm cursor-pointer"
+            style={{ animationDelay: "0.4s" }}
+            aria-label="Switch between dark and light theme"
           >
-            [{mode}]
-          </motion.div>
-          <motion.button
+            {/* Both labels are in the HTML; CSS shows the one for the active
+                theme, so the label is right before React hydrates. */}
+            <span className="animate-pulse inline-block">
+              <span className="hidden dark:inline">[dark]</span>
+              <span className="dark:hidden">[light]</span>
+            </span>
+          </button>
+          <button
+            type="button"
             onClick={() => {
-              // Clear the mouse trails when entering the main content
-              if (typeof window !== "undefined" && window.clearMouseTrail) {
-                window.clearMouseTrail();
-              }
-              // Scroll to the about section
+              window.clearMouseTrail?.();
               aboutRef.current?.scrollIntoView({ behavior: "smooth" });
             }}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
-            }}
-            whileTap={{
-              scale: 0.95,
-              boxShadow: "0 5px 10px rgba(0, 0, 0, 0.1)",
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 17,
-              mass: 1,
-            }}
-            className={`mt-10 px-8 py-2 bg-transparent border ${
-              mode === "dark"
-                ? "border-white text-white"
-                : "border-black text-black"
-            } rounded-full`}
+            className="pop-in enter-btn mt-10 px-8 py-2 bg-transparent border rounded-full border-black dark:border-white"
+            style={{ animationDelay: "0.3s" }}
           >
             enter
-          </motion.button>
-          <motion.a
+          </button>
+          <a
             href="/research/llm-robot-interface/"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className={`mt-8 max-w-xs text-sm underline underline-offset-4 decoration-1 opacity-80 hover:opacity-100 ${textClass}`}
+            className="fade-in mt-8 max-w-xs text-sm underline underline-offset-4 decoration-1 opacity-80 hover:opacity-100"
+            style={{ animationDelay: "0.6s" }}
           >
             new: a field study on how LLMs should control a robot arm
-          </motion.a>
+          </a>
         </div>
       </section>
-      <motion.main
-        ref={aboutRef}
-        initial={false}
-        animate={{ backgroundColor: bgColor }}
-        transition={modeTransition}
-      >
+      <main ref={aboutRef}>
         <div id="about" className="scroll-mt-12">
-          <About mode={mode} />
+          <About />
         </div>
-        <Education mode={mode} />
+        <Education />
         <div id="experience" className="scroll-mt-12">
-          <Experience mode={mode} />
+          <Experience />
         </div>
-        <Projects mode={mode} />
+        <Projects />
         <div id="research" className="scroll-mt-12">
-          <Research mode={mode} />
+          <Research />
         </div>
-        <Skills mode={mode} />
-      </motion.main>
-    </motion.div>
+        <Skills />
+      </main>
+    </div>
   );
 }

@@ -1,17 +1,13 @@
 import React from 'react';
 import { resume } from '@/data/resume';
 
-interface EducationProps {
-  mode: 'dark' | 'light';
-}
-
-export function Education({ mode }: EducationProps) {
-  // Define text classes based on mode
-  const titleClass = mode === 'dark' ? 'text-white' : 'text-gray-900';
-  const institutionClass = mode === 'dark' ? 'text-gray-100' : 'text-gray-800';
-  const degreeClass = mode === 'dark' ? 'text-gray-200' : 'text-gray-700';
-  const dateClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-500';
-  const detailClass = mode === 'dark' ? 'text-gray-400' : 'text-gray-600';
+export function Education() {
+  // Light colours, with dark: variants for the dark theme
+  const titleClass = 'text-gray-900 dark:text-white';
+  const institutionClass = 'text-gray-800 dark:text-gray-100';
+  const degreeClass = 'text-gray-700 dark:text-gray-200';
+  const dateClass = 'text-gray-500 dark:text-gray-400';
+  const detailClass = 'text-gray-600 dark:text-gray-400';
   
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">

@@ -1,19 +1,14 @@
 import React from "react";
+import Image from "next/image";
 import { resume } from "@/data/resume";
 
-interface ResearchProps {
-  mode: "dark" | "light";
-}
-
-export function Research({ mode }: ResearchProps) {
-  const titleClass = mode === "dark" ? "text-white" : "text-gray-900";
-  const bodyClass = mode === "dark" ? "text-gray-300" : "text-gray-700";
-  const mutedClass = mode === "dark" ? "text-gray-400" : "text-gray-500";
+export function Research() {
+  const titleClass = 'text-gray-900 dark:text-white';
+  const bodyClass = 'text-gray-700 dark:text-gray-300';
+  const mutedClass = 'text-gray-500 dark:text-gray-400';
   const linkClass =
-    mode === "dark"
-      ? "text-blue-400 hover:text-blue-300"
-      : "text-green-600 hover:text-green-800";
-  const borderClass = mode === "dark" ? "border-gray-700" : "border-gray-200";
+    'text-green-600 hover:text-green-800 dark:text-blue-400 dark:hover:text-blue-300';
+  const borderClass = 'border-gray-200 dark:border-gray-700';
 
   return (
     <section className="w-full max-w-[95%] sm:max-w-2xl md:max-w-3xl mx-auto py-12 md:py-16 px-4 sm:px-6 md:px-8">
@@ -36,13 +31,15 @@ export function Research({ mode }: ResearchProps) {
               tabIndex={-1}
               aria-hidden="true"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.image}
-                alt=""
-                loading="lazy"
-                className="w-full aspect-[16/9] object-cover"
-              />
+              <span className="relative block w-full aspect-[16/9]">
+                <Image
+                  src={item.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 720px, 92vw"
+                  className="object-cover"
+                />
+              </span>
             </a>
             <div className="p-4 sm:p-5">
               <h3
@@ -99,13 +96,15 @@ export function Research({ mode }: ResearchProps) {
               tabIndex={-1}
               aria-hidden="true"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={pub.image}
-                alt=""
-                loading="lazy"
-                className="w-full aspect-[16/9] object-cover object-[center_20%]"
-              />
+              <span className="relative block w-full aspect-[16/9]">
+                <Image
+                  src={pub.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 720px, 92vw"
+                  className="object-[center_20%] object-cover"
+                />
+              </span>
             </a>
             <div className="p-4 sm:p-5">
               <h3

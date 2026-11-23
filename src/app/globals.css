@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Theme is chosen before first paint (layout.tsx) and stored on <html>.
+   `dark:` utilities follow it, not the operating system. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* The canvas colour is the theme colour, so overscroll bounce, pull to
+   refresh, and any tile Safari hasn't painted yet during a fast scroll show
+   the page's own background instead of white. */
+html {
+  background-color: #ffffff;
+  color: #171717;
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  background-color: #000000;
+  color: #ededed;
+  color-scheme: dark;
+}
+/* Theme switch: a GPU cross-fade of page snapshots (see useTheme). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hero entrance: pure CSS, so it starts with the first paint instead of
+   waiting for JavaScript, and the heading is never stuck invisible. */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+.hero-in {
+  animation: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.fade-in {
+  animation: fade-in 0.8s ease-out backwards;
+}
+.pop-in {
+  animation: pop-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Background light: two pre-drawn sets, one per theme, cross-faded by
+   opacity. Theme changes never repaint the soft circles. */
+@keyframes breathe {
+  50% {
+    transform: scale(1.04);
+  }
+}
+.bokeh-set {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bokeh-set.is-light {
+  opacity: 0;
+}
+html[data-theme="light"] .bokeh-set.is-light {
+  opacity: 1;
+}
+html[data-theme="light"] .bokeh-set.is-dark {
+  opacity: 0;
+}
+.bokeh {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+.bokeh.bokeh-ready {
+  opacity: 1;
+}
+.bokeh-layer {
+  position: absolute;
+  left: -10%;
+  top: -10%;
+  width: 120%;
+  height: 120%;
+  will-change: transform;
+  animation: breathe var(--breathe, 18s) ease-in-out infinite;
+}
+.bokeh-paused .bokeh-layer {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in,
+  .fade-in,
+  .pop-in,
+  .bokeh-layer {
+    animation: none !important;
+  }
+}
+
+/* "enter": the same springy hover and press as before, in CSS. */
+.enter-btn {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+}
+.enter-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.enter-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }

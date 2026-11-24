@@ -79,12 +79,32 @@
       if (v.readyState >= 2) { clearTimeout(timer); timer = 0; hideFallback(); }
     }));
     v.addEventListener('error', showFallback);
+    // When a <source> child fails, the error fires on the <source>, not on
+    // the video: the video just drops to "no source" (networkState 3) and
+    // silently waits forever. Treat that as a hard failure straight away.
+    v.querySelectorAll('source').forEach((s) => s.addEventListener('error', () => {
+      log(v, 'source failed to load');
+      if (debug) {
+        fetch(s.src, { headers: { Range: 'bytes=0-1' }, cache: 'no-store' })
+          .then((r) => log(v, `probe fetch: ${r.status} ${r.headers.get('content-type')}`))
+          .catch((e) => log(v, `probe fetch failed: ${e && e.message}`));
+      }
+      clearTimeout(timer);
+      timer = 0;
+      showFallback();
+    }));
 
     if (debug) {
       ['loadstart', 'progress', 'suspend', 'abort', 'error', 'emptied', 'stalled', 'loadedmetadata',
         'loadeddata', 'canplay', 'canplaythrough', 'playing', 'waiting', 'seeking', 'seeked',
         'ended', 'play', 'pause'].forEach((e) => v.addEventListener(e, () => log(v, e)));
       log(v, 'ready to log');
+    }
+    // A source that failed before this script ran left no event to catch:
+    // run source selection again so a failure is seen this time.
+    if (v.networkState === 3 && v.readyState === 0) {
+      log(v, 'no source at start: reselecting');
+      v.load();
     }
   });
 })();

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useRef } from "react";
 
 import { AnimatedBackground, MouseTrail } from "@/components/animations";
@@ -36,7 +37,13 @@ export default function Home() {
             trevor kwan
           </h1>
           <p className="fade-in mt-4 text-lg drop-shadow-sm" style={{ animationDelay: "0.2s" }}>
-            software engineer · robotics researcher · photographer
+            software engineer · robotics researcher ·{" "}
+            <Link
+              href="/photography/"
+              className="underline underline-offset-[6px] decoration-1 decoration-[#e5533a] transition-opacity hover:opacity-80"
+            >
+              photographer
+            </Link>
           </p>
           <button
             type="button"

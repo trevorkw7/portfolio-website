@@ -33,6 +33,21 @@ type Shelf = {
 const pad = (n: number) => String(n).padStart(2, "0");
 const framesOf = (s: Series) => [s.hero, ...s.rows.flat()];
 
+/** The diary's chapters by year, each keeping its place in the whole list. */
+const byYear = (items: Series[]) => {
+  const years: { year: string; chapters: { s: Series; i: number }[] }[] = [];
+  items.forEach((s, i) => {
+    const year = `20${(s.when ?? "").slice(3)}`;
+    const last = years[years.length - 1];
+    if (last?.year === year) last.chapters.push({ s, i });
+    else years.push({ year, chapters: [{ s, i }] });
+  });
+  return years;
+};
+
+/** The day a frame was taken, "27.11", from its timestamp. */
+const dayOf = (p: Photo) => (p.t ?? "").slice(0, 5);
+
 const fromHash = (items: Series[]) => {
   const hash = decodeURIComponent(window.location.hash.slice(1));
   if (hash === "index") return INDEX;
@@ -86,13 +101,14 @@ export function Gallery({ section, items }: { section: Section; items: Series[] 
     );
   }, [items]);
 
-  // On a phone the chapter list is one line that scrolls sideways; keep the
-  // current chapter in the middle of it.
+  // On a phone a line of chapters scrolls sideways; keep the current chapter
+  // in the middle of its line.
   useEffect(() => {
-    const strip = chaptersRef.current;
-    const on = strip?.querySelector<HTMLElement>('[data-on="true"]');
-    if (!strip || !on || strip.scrollWidth <= strip.clientWidth) return;
-    strip.scrollTo({ left: on.offsetLeft - (strip.clientWidth - on.offsetWidth) / 2, behavior: "smooth" });
+    const on = chaptersRef.current?.querySelector<HTMLElement>('.pg-chapter[data-on="true"]');
+    const strip = on?.closest<HTMLElement>("[data-strip]");
+    if (!on || !strip || strip.scrollWidth <= strip.clientWidth) return;
+    const left = on.offsetLeft - strip.offsetLeft - (strip.clientWidth - on.offsetWidth) / 2;
+    strip.scrollTo({ left, behavior: "smooth" });
   }, [sel]);
 
   const open = useCallback((photos: Photo[], at: number, name: string, opener: HTMLElement) => {
@@ -134,21 +150,53 @@ export function Gallery({ section, items }: { section: Section; items: Series[] 
       </nav>
 
       <div className="pg-wrap pg-idx">
-        <div className="pg-chapters" ref={chaptersRef}>
-          {items.map((s, i) => (
-            <button
-              key={s.slug}
-              type="button"
-              className="pg-t pg-chapter"
-              data-on={sel === i}
-              aria-current={sel === i ? "true" : undefined}
-              onClick={() => go(i)}
-            >
-              <span className="pg-num">{mark(i)}</span>
-              <span className="pg-chapter-title">{s.title}</span>
-            </button>
-          ))}
-        </div>
+        {shelf.days ? (
+          // The diary reads by year: the year is said once, at the head of
+          // its line, and each chapter carries only its month.
+          <div className="pg-years" ref={chaptersRef}>
+            {byYear(items).map(({ year, chapters }) => (
+              <div
+                className="pg-year"
+                key={year}
+                data-on={chapters.some(({ i }) => i === sel)}
+              >
+                <span className="pg-num pg-year-name">{year}</span>
+                <div className="pg-chapters" data-strip>
+                  {chapters.map(({ s, i }) => (
+                    <button
+                      key={s.slug}
+                      type="button"
+                      className="pg-t pg-chapter"
+                      data-on={sel === i}
+                      aria-current={sel === i ? "true" : undefined}
+                      aria-label={`${s.title}, ${s.span ?? year}`}
+                      onClick={() => go(i)}
+                    >
+                      <span className="pg-num">{(s.when ?? "").slice(0, 2)}</span>
+                      <span className="pg-chapter-title">{s.title}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="pg-chapters" data-strip ref={chaptersRef}>
+            {items.map((s, i) => (
+              <button
+                key={s.slug}
+                type="button"
+                className="pg-t pg-chapter"
+                data-on={sel === i}
+                aria-current={sel === i ? "true" : undefined}
+                onClick={() => go(i)}
+              >
+                <span className="pg-num">{mark(i)}</span>
+                <span className="pg-chapter-title">{s.title}</span>
+              </button>
+            ))}
+          </div>
+        )}
         <button
           type="button"
           className="pg-t pg-label pg-sheetlink"
@@ -200,6 +248,10 @@ function Reel({ shelf, s, index, open }: { shelf: Shelf; s: Series; index: numbe
   const name = shelf.days ? s.title : shelf.label(index);
   // Where each row starts within the series; the title card is frame 0.
   const starts = s.rows.map((_, r) => 1 + s.rows.slice(0, r).reduce((t, row) => t + row.length, 0));
+  // A chapter that runs over several days is set in stanzas, one per day,
+  // each under its date. A chapter of one day needs no more than its title.
+  const rowDays = s.rows.map((row) => dayOf(row[0]));
+  const stanzas = shelf.days && new Set(rowDays).size > 1;
 
   return (
     <section className="pg-reel" aria-label={s.title}>
@@ -240,11 +292,22 @@ function Reel({ shelf, s, index, open }: { shelf: Shelf; s: Series; index: numbe
         <div className="pg-rows">
           {s.rows.map((row, r) => {
             const sum = row.reduce((t, p) => t + p.w / p.h, 0);
+            // A frame given a row to itself is a pause: an upright one stands
+            // alone in the middle of the column, a wide one fills it.
+            const solo = row.length === 1;
+            const newDay = stanzas && rowDays[r] !== rowDays[r - 1];
             return (
-              <div className="pg-row" key={r}>
+              <React.Fragment key={r}>
+                {newDay && (
+                  <div className="pg-day" data-first={r === 0}>
+                    <span className="pg-num">{rowDays[r]}</span>
+                  </div>
+                )}
+              <div className={solo ? "pg-row pg-row-solo" : "pg-row"}>
                 {row.map((p, c) => {
                   const here = starts[r] + c;
                   const ar = p.w / p.h;
+                  const wide = solo && ar < 1 ? 520 : Math.round((ar / sum) * 1200);
                   return (
                     <button
                       key={p.id}
@@ -256,7 +319,7 @@ function Reel({ shelf, s, index, open }: { shelf: Shelf; s: Series; index: numbe
                       <img
                         src={file(p, 800)}
                         srcSet={`${file(p, 800)} 800w, ${file(p, 1800)} 1800w`}
-                        sizes={`(max-width: 720px) 100vw, ${Math.round((ar / sum) * 1200)}px`}
+                        sizes={`(max-width: 720px) 100vw, ${wide}px`}
                         width={p.w}
                         height={p.h}
                         alt={p.alt}
@@ -267,6 +330,7 @@ function Reel({ shelf, s, index, open }: { shelf: Shelf; s: Series; index: numbe
                   );
                 })}
               </div>
+              </React.Fragment>
             );
           })}
         </div>

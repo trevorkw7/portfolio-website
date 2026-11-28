@@ -88,7 +88,7 @@ html:has(.pg-root) {
 /* Chapter list */
 .pg-idx {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 0 48px;
   padding-top: 8px;
   padding-bottom: 40px;
@@ -121,6 +121,31 @@ html:has(.pg-root) {
 .pg-sheetlink {
   flex: none;
   white-space: nowrap;
+}
+
+/* The diary's chapters, a line to a year. The year stands once at the head
+   of its line and the chapters after it carry only their month. */
+.pg-years {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.pg-year {
+  display: flex;
+  align-items: baseline;
+}
+.pg-year-name {
+  flex: none;
+  width: 72px;
+  color: #6a7282;
+  transition: color 0.3s ease;
+}
+.pg-year[data-on="true"] .pg-year-name {
+  color: #ededed;
+}
+.pg-year .pg-chapters {
+  text-wrap: wrap;
 }
 
 /* A series */
@@ -215,6 +240,44 @@ html:has(.pg-root) {
   height: 100%;
   object-fit: cover;
   transition: opacity 0.5s ease;
+}
+
+/* A frame with a row to itself: a pause. It sits in the middle of the
+   column, never taller than the screen, with room above and below. */
+.pg-row-solo {
+  justify-content: center;
+  margin: 40px 0;
+}
+.pg-row-solo:first-child {
+  margin-top: 0;
+}
+.pg-row-solo:last-child {
+  margin-bottom: 0;
+}
+.pg-row-solo .pg-frame {
+  flex: none;
+  width: min(100%, calc(min(82vh, 780px) * var(--ar)));
+}
+
+/* The date a day's frames were taken, at the head of its stanza. */
+.pg-day {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 56px;
+  padding-bottom: 4px;
+}
+.pg-day[data-first="true"] {
+  margin-top: 0;
+}
+.pg-day .pg-num {
+  color: #6a7282;
+}
+.pg-day::after {
+  content: "";
+  flex: 1 1 0;
+  height: 1px;
+  background: #101828;
 }
 
 /* Previous and next series */
@@ -559,6 +622,27 @@ html:has(.pg-root) {
   .pg-row .pg-frame {
     flex: none;
     width: 100%;
+  }
+  .pg-row-solo {
+    margin: 0;
+  }
+  .pg-year-name {
+    width: 52px;
+  }
+  .pg-years {
+    flex: none;
+    align-self: stretch;
+  }
+  .pg-year .pg-chapters {
+    flex: 1 1 0;
+    align-self: baseline;
+    min-width: 0;
+    margin: 0 calc(var(--pg-pad) * -1) 0 0;
+    padding: 0 var(--pg-pad) 0 0;
+    text-wrap: nowrap;
+  }
+  .pg-day {
+    margin-top: 40px;
   }
   .pg-sheet-title {
     width: 100%;

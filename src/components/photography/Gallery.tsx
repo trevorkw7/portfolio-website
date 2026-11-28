@@ -5,28 +5,57 @@
    srcset, so they do not go through the image optimiser. */
 
 import Link from "next/link";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { series, type Photo, type Series } from "@/data/photos";
+import type { Photo, Series } from "@/data/photos";
 
 const INDEX = -1; // the contact sheet
 const INSTAGRAM = "https://www.instagram.com/tk7.photo/";
 
-const file = (p: Photo, size: 160 | 800 | 1800) => `/photos/p${p.id}-${size}.webp`;
+/** The page has two sections: the themed series, and a diary by place and date. */
+export type Section = "series" | "days";
+const SECTIONS: { id: Section; href: string }[] = [
+  { id: "series", href: "/photography/" },
+  { id: "days", href: "/photography/days/" },
+];
+
+type Size = 160 | 800 | 1800;
+/** What the parts below need to know about the section they are showing. */
+type Shelf = {
+  items: Series[];
+  days: boolean;
+  file: (p: Photo, size: Size) => string;
+  /** What stands in front of a title: its number, or in the diary its month. */
+  mark: (i: number) => string;
+  label: (i: number) => string;
+};
+
 const pad = (n: number) => String(n).padStart(2, "0");
 const framesOf = (s: Series) => [s.hero, ...s.rows.flat()];
-const label = (i: number) => `${pad(i + 1)} ${series[i].title}`;
 
-const fromHash = () => {
+const fromHash = (items: Series[]) => {
   const hash = decodeURIComponent(window.location.hash.slice(1));
   if (hash === "index") return INDEX;
-  const i = series.findIndex((s) => s.slug === hash);
+  const i = items.findIndex((s) => s.slug === hash);
   return i < 0 ? 0 : i;
 };
 
 type Viewing = { photos: Photo[]; at: number; label: string };
 
-export function Gallery() {
+export function Gallery({ section, items }: { section: Section; items: Series[] }) {
+  const shelf = useMemo<Shelf>(() => {
+    const days = section === "days";
+    const dir = days ? "/photos/days" : "/photos";
+    const mark = (i: number) => items[i].when ?? pad(i + 1);
+    return {
+      items,
+      days,
+      file: (p, size) => `${dir}/p${p.id}-${size}.webp`,
+      mark,
+      label: (i) => `${mark(i)} ${items[i].title}`,
+    };
+  }, [section, items]);
+  const { label, mark } = shelf;
   const [sel, setSel] = useState(0);
   const [viewing, setViewing] = useState<Viewing | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -36,7 +65,7 @@ export function Gallery() {
   // The series in view is kept in the URL hash, so a series can be linked to
   // and the Back button steps through the ones visited.
   useEffect(() => {
-    const sync = () => setSel(fromHash());
+    const sync = () => setSel(fromHash(items));
     sync();
     window.addEventListener("popstate", sync);
     window.addEventListener("hashchange", sync);
@@ -44,18 +73,18 @@ export function Gallery() {
       window.removeEventListener("popstate", sync);
       window.removeEventListener("hashchange", sync);
     };
-  }, []);
+  }, [items]);
 
   const go = useCallback((next: number) => {
-    const n = series.length;
+    const n = items.length;
     const to = next === INDEX ? INDEX : ((next % n) + n) % n;
     setSel(to);
-    window.history.pushState(null, "", to === INDEX ? "#index" : `#${series[to].slug}`);
+    window.history.pushState(null, "", to === INDEX ? "#index" : `#${items[to].slug}`);
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     requestAnimationFrame(() =>
       galleryRef.current?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }),
     );
-  }, []);
+  }, [items]);
 
   // On a phone the chapter list is one line that scrolls sideways; keep the
   // current chapter in the middle of it.
@@ -83,16 +112,30 @@ export function Gallery() {
     setViewing((v) => (v ? { ...v, at: (v.at + by + v.photos.length) % v.photos.length } : v));
   }, []);
 
-  const current = sel === INDEX ? null : series[sel];
-  const n = series.length;
+  const current = sel === INDEX ? null : items[sel];
+  const n = items.length;
 
   return (
     <main className="pg">
-      <h1 className="sr-only">Photographs</h1>
+      <h1 className="sr-only">{shelf.days ? "Photographs: days" : "Photographs"}</h1>
+
+      <nav className="pg-wrap pg-sections" aria-label="Sections">
+        {SECTIONS.map((sec) => (
+          <Link
+            key={sec.id}
+            href={sec.href}
+            className="pg-t pg-label pg-section"
+            data-on={sec.id === section}
+            aria-current={sec.id === section ? "page" : undefined}
+          >
+            {sec.id}
+          </Link>
+        ))}
+      </nav>
 
       <div className="pg-wrap pg-idx">
         <div className="pg-chapters" ref={chaptersRef}>
-          {series.map((s, i) => (
+          {items.map((s, i) => (
             <button
               key={s.slug}
               type="button"
@@ -101,7 +144,7 @@ export function Gallery() {
               aria-current={sel === i ? "true" : undefined}
               onClick={() => go(i)}
             >
-              <span className="pg-num">{pad(i + 1)}</span>
+              <span className="pg-num">{mark(i)}</span>
               <span className="pg-chapter-title">{s.title}</span>
             </button>
           ))}
@@ -119,9 +162,9 @@ export function Gallery() {
 
       <div ref={galleryRef} className="pg-gallery">
         {current ? (
-          <Reel key={current.slug} s={current} index={sel} total={n} open={open} />
+          <Reel key={current.slug} shelf={shelf} s={current} index={sel} open={open} />
         ) : (
-          <Sheet go={go} open={open} />
+          <Sheet shelf={shelf} go={go} open={open} />
         )}
       </div>
 
@@ -142,7 +185,7 @@ export function Gallery() {
         </footer>
       </div>
 
-      {viewing && <Viewer v={viewing} step={step} close={close} />}
+      {viewing && <Viewer shelf={shelf} v={viewing} step={step} close={close} />}
     </main>
   );
 }
@@ -150,9 +193,11 @@ export function Gallery() {
 type Open = (photos: Photo[], at: number, name: string, opener: HTMLElement) => void;
 
 /** One series: the title card, its name, then the rows of frames. */
-function Reel({ s, index, total, open }: { s: Series; index: number; total: number; open: Open }) {
+function Reel({ shelf, s, index, open }: { shelf: Shelf; s: Series; index: number; open: Open }) {
+  const { file } = shelf;
   const photos = framesOf(s);
-  const name = label(index);
+  // In the diary the viewer shows each frame's own date, so the place is enough.
+  const name = shelf.days ? s.title : shelf.label(index);
   // Where each row starts within the series; the title card is frame 0.
   const starts = s.rows.map((_, r) => 1 + s.rows.slice(0, r).reduce((t, row) => t + row.length, 0));
 
@@ -172,6 +217,7 @@ function Reel({ s, index, total, open }: { s: Series; index: number; total: numb
             height={s.hero.h}
             alt={s.hero.alt}
             fetchPriority="high"
+            style={s.heroY == null ? undefined : { objectPosition: `50% ${s.heroY}%` }}
           />
         </span>
       </button>
@@ -180,11 +226,14 @@ function Reel({ s, index, total, open }: { s: Series; index: number; total: numb
         <div className="pg-titlecard">
           <div className="pg-titlecard-name">
             <span className="pg-num pg-tc-a">
-              {pad(index + 1)} / {pad(total)}
+              {s.span ?? `${pad(index + 1)} / ${pad(shelf.items.length)}`}
             </span>
             <h2 className="pg-tc-b">{s.title}</h2>
           </div>
-          <span className="pg-label pg-tc-c">{photos.length} frames</span>
+          <span className="pg-label pg-tc-c">
+            {photos.length} frames
+            {s.camera ? ` · ${s.camera}` : ""}
+          </span>
         </div>
         <div className="pg-rule" />
 
@@ -227,17 +276,18 @@ function Reel({ s, index, total, open }: { s: Series; index: number; total: numb
 }
 
 /** Every series as a strip of small frames. */
-function Sheet({ go, open }: { go: (i: number) => void; open: Open }) {
+function Sheet({ shelf, go, open }: { shelf: Shelf; go: (i: number) => void; open: Open }) {
+  const { file, mark } = shelf;
   return (
     <section className="pg-reel pg-wrap" aria-label="Contact sheet">
       <div className="pg-sheet">
-        {series.map((s, i) => {
+        {shelf.items.map((s, i) => {
           const photos = framesOf(s);
           return (
             <div className="pg-sheetrow" key={s.slug} style={{ "--i": i + 1 } as React.CSSProperties}>
               <button type="button" className="pg-t pg-dim pg-sheet-title" onClick={() => go(i)}>
                 <span className="pg-num">
-                  {pad(i + 1)} · {photos.length}
+                  {mark(i)} · {photos.length}
                 </span>
                 <span>{s.title}</span>
               </button>
@@ -247,7 +297,7 @@ function Sheet({ go, open }: { go: (i: number) => void; open: Open }) {
                     key={p.id}
                     type="button"
                     className="pg-thumb"
-                    onClick={(e) => open(photos, at, label(i), e.currentTarget)}
+                    onClick={(e) => open(photos, at, shelf.days ? s.title : shelf.label(i), e.currentTarget)}
                   >
                     <img
                       src={file(p, 160)}
@@ -269,7 +319,18 @@ function Sheet({ go, open }: { go: (i: number) => void; open: Open }) {
 }
 
 /** One frame on black, with the rest of its series a step away. */
-function Viewer({ v, step, close }: { v: Viewing; step: (by: number) => void; close: () => void }) {
+function Viewer({
+  shelf,
+  v,
+  step,
+  close,
+}: {
+  shelf: Shelf;
+  v: Viewing;
+  step: (by: number) => void;
+  close: () => void;
+}) {
+  const { file } = shelf;
   const ref = useRef<HTMLDivElement>(null);
   const touchX = useRef<number | null>(null);
   const photo = v.photos[v.at];
@@ -292,7 +353,7 @@ function Viewer({ v, step, close }: { v: Viewing; step: (by: number) => void; cl
       const img = new Image();
       img.src = file(v.photos[(v.at + d + m) % m], 1800);
     });
-  }, [v.at, v.photos]);
+  }, [v.at, v.photos, file]);
 
   return (
     <div
@@ -334,7 +395,10 @@ function Viewer({ v, step, close }: { v: Viewing; step: (by: number) => void; cl
         <button type="button" className="pg-zone pg-zone-r" aria-label="Next frame" onClick={() => step(1)} />
       </div>
       <div className="pg-viewer-bar pg-label">
-        <span>{v.label}</span>
+        <span className="pg-viewer-name">
+          {v.label}
+          {photo.t && <span className="pg-when">{photo.t}</span>}
+        </span>
         <span className="pg-count">
           {pad(v.at + 1)} / {pad(v.photos.length)}
         </span>

@@ -6,14 +6,32 @@
 // Files live in public/photos as p<id>-<size>.webp: 800 and 1800 px on the
 // long edge, plus a 160 px tall thumbnail for the contact sheet. `w` and `h`
 // are the pixel size of the 1800 file.
+//
+// The optional fields are used by the diary in days.ts, where a chapter is a
+// place and a stretch of dates rather than a theme.
 
-export type Photo = { id: string; w: number; h: number; alt: string };
+export type Photo = {
+  id: string;
+  w: number;
+  h: number;
+  alt: string;
+  /** When the frame was taken, local time, as shown in the viewer. */
+  t?: string;
+};
 
 export type Series = {
   slug: string;
   title: string;
   hero: Photo;
   rows: Photo[][];
+  /** Month and year the chapter starts, "11.25". Stands in for the number. */
+  when?: string;
+  /** The dates the chapter covers, "26 – 29.11.2025". */
+  span?: string;
+  /** The camera the chapter was made with. */
+  camera?: string;
+  /** Where the title card's crop sits in the frame, top to bottom, in percent. */
+  heroY?: number;
 };
 
 export const series: Series[] = [

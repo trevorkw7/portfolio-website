@@ -21,7 +21,7 @@ export default function Photography() {
   return (
     <div data-theme="dark" className="pg-root font-sans">
       <SiteNav pinned wide home="/" current="photographs" />
-      <Gallery />
+      <Gallery section="series" items={series} />
     </div>
   );
 }

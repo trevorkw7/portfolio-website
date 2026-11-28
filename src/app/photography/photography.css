@@ -66,12 +66,31 @@ html:has(.pg-root) {
   color: var(--pg-dim);
 }
 
+/* The two sections of the page: the series and the diary. */
+.pg-sections {
+  display: flex;
+  gap: 0 28px;
+  padding-top: 28px;
+}
+.pg-section {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+.pg-section[data-on="true"] {
+  text-decoration-color: var(--pg-accent);
+}
+
 /* Chapter list */
 .pg-idx {
   display: flex;
   align-items: flex-start;
   gap: 0 48px;
-  padding-top: 40px;
+  padding-top: 8px;
   padding-bottom: 40px;
 }
 .pg-chapters {
@@ -376,6 +395,13 @@ html:has(.pg-root) {
 .pg-viewer-bar .pg-close {
   color: #ededed;
 }
+/* In the diary, when the frame was taken follows the place. */
+.pg-when {
+  margin-left: 18px;
+  letter-spacing: 0.08em;
+  color: #6a7282;
+  white-space: nowrap;
+}
 .pg-viewer-ctl {
   display: flex;
   gap: 0 28px;
@@ -497,9 +523,12 @@ html:has(.pg-root) {
 /* Phone: one frame per row, a taller title card, and lists that scroll
    sideways instead of wrapping. */
 @media (max-width: 720px) {
+  .pg-sections {
+    padding-top: 12px;
+  }
   .pg-idx {
     flex-direction: column;
-    padding-top: 20px;
+    padding-top: 0;
     padding-bottom: 20px;
   }
   .pg-sheetlink {

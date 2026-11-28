@@ -32,6 +32,8 @@ export type Series = {
   camera?: string;
   /** Where the title card's crop sits in the frame, top to bottom, in percent. */
   heroY?: number;
+  /** How a chapter that runs long is divided: by day (the default) or by month. */
+  by?: "month";
 };
 
 export const series: Series[] = [

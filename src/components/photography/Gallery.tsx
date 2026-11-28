@@ -47,6 +47,8 @@ const byYear = (items: Series[]) => {
 
 /** The day a frame was taken, "27.11", from its timestamp. */
 const dayOf = (p: Photo) => (p.t ?? "").slice(0, 5);
+// "18.09.2024 · 13:36" -> "09.2024", for a chapter kept by the month.
+const monthOf = (p: Photo) => (p.t ?? "").slice(3, 10);
 
 const fromHash = (items: Series[]) => {
   const hash = decodeURIComponent(window.location.hash.slice(1));
@@ -250,7 +252,8 @@ function Reel({ shelf, s, index, open }: { shelf: Shelf; s: Series; index: numbe
   const starts = s.rows.map((_, r) => 1 + s.rows.slice(0, r).reduce((t, row) => t + row.length, 0));
   // A chapter that runs over several days is set in stanzas, one per day,
   // each under its date. A chapter of one day needs no more than its title.
-  const rowDays = s.rows.map((row) => dayOf(row[0]));
+  // One that runs over a school year is kept by the month instead.
+  const rowDays = s.rows.map((row) => (s.by === "month" ? monthOf(row[0]) : dayOf(row[0])));
   const stanzas = shelf.days && new Set(rowDays).size > 1;
 
   return (

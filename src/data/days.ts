@@ -18,8 +18,24 @@ export const days: Series[] = [
     hero: { id: "2403", w: 1800, h: 1200, t: "19.10.2025 · 21:22", alt: "A street lamp glowing through red autumn leaves at night" },
     rows: [
       [
+        { id: "2083", w: 1800, h: 1200, t: "17.10.2025 · 18:44", alt: "A man at the door of a Chinese restaurant lit by neon" },
+        { id: "2187", w: 1800, h: 1200, t: "17.10.2025 · 19:16", alt: "A man mid-stride on a crossing under street lamps at night" },
+      ],
+      [
+        { id: "2244", w: 1200, h: 1800, t: "17.10.2025 · 19:41", alt: "Silhouettes of a man with a backpack and a stroller against a lit window" },
+        { id: "2130", w: 1800, h: 1200, t: "17.10.2025 · 18:56", alt: "A coffee stall glowing green and yellow in a covered alley at night" },
+      ],
+      [
         { id: "2305", w: 1800, h: 1200, t: "19.10.2025 · 15:48", alt: "A man walking under a row of street trees downtown" },
         { id: "2325", w: 1800, h: 1200, t: "19.10.2025 · 15:52", alt: "A red Fiat parked outside a dark office entrance" },
+      ],
+      [
+        { id: "2338", w: 1200, h: 1800, t: "19.10.2025 · 20:49", alt: "A street lamp over wet tram tracks and autumn trees at night" },
+        { id: "2357", w: 1800, h: 1200, t: "19.10.2025 · 21:00", alt: "Autumn leaves in front of a row of lit office windows at night" },
+      ],
+      [
+        { id: "2491", w: 1800, h: 1200, t: "20.10.2025 · 22:16", alt: "Fallen leaves on glowing steps at night" },
+        { id: "2503", w: 1800, h: 1200, t: "20.10.2025 · 22:19", alt: "A lit parking garage entrance at night, one person standing outside" },
       ],
       [
         { id: "2620", w: 1200, h: 1800, t: "26.10.2025 · 17:32", alt: "A footpath covered in red leaves beside a chain-link fence" },
@@ -32,18 +48,6 @@ export const days: Series[] = [
       [
         { id: "2722", w: 1200, h: 1800, t: "26.10.2025 · 17:55", alt: "A dock lamp and picnic tables against a clearing sunset over the lake" },
         { id: "2759", w: 1800, h: 1200, t: "26.10.2025 · 18:12", alt: "A wet road through a windscreen, tail lights reflected in the rain" },
-      ],
-      [
-        { id: "2083", w: 1800, h: 1200, t: "17.10.2025 · 18:44", alt: "A man at the door of a Chinese restaurant lit by neon" },
-        { id: "2187", w: 1800, h: 1200, t: "17.10.2025 · 19:16", alt: "A man mid-stride on a crossing under street lamps at night" },
-      ],
-      [
-        { id: "2244", w: 1200, h: 1800, t: "17.10.2025 · 19:41", alt: "Silhouettes of a man with a backpack and a stroller against a lit window" },
-        { id: "2491", w: 1800, h: 1200, t: "20.10.2025 · 22:16", alt: "Fallen leaves on glowing steps at night" },
-      ],
-      [
-        { id: "2503", w: 1800, h: 1200, t: "20.10.2025 · 22:19", alt: "A lit parking garage entrance at night, one person standing outside" },
-        { id: "2357", w: 1800, h: 1200, t: "19.10.2025 · 21:00", alt: "Autumn leaves in front of a row of lit office windows at night" },
       ],
     ],
   },
@@ -60,25 +64,29 @@ export const days: Series[] = [
         { id: "2933", w: 1800, h: 1200, t: "23.11.2025 · 15:38", alt: "A red minibus close up, the driver behind its destination signs" },
       ],
       [
-        { id: "3144", w: 1200, h: 1800, t: "24.11.2025 · 10:25", alt: "A double-decker tram seen from a footbridge" },
-        { id: "3098", w: 1800, h: 1200, t: "24.11.2025 · 10:13", alt: "A red taxi in motion, the street blurred behind it" },
-        { id: "3229", w: 1200, h: 1800, t: "24.11.2025 · 14:35", alt: "People crossing a street into low sun between towers" },
-      ],
-      [
-        { id: "3075", w: 1800, h: 1200, t: "24.11.2025 · 10:05", alt: "A red taxi and passers-by framed by a doorway" },
-        { id: "3061", w: 1800, h: 1200, t: "24.11.2025 · 09:55", alt: "A fruit stall under hanging lamps, oranges stacked in front" },
+        { id: "2924", w: 1800, h: 1200, t: "23.11.2025 · 15:24", alt: "A man at the counter of a shop under a painted awning" },
+        { id: "2968", w: 1800, h: 1200, t: "23.11.2025 · 16:41", alt: "The shadow of a pine cast on a wall in low afternoon light" },
       ],
       [
         { id: "3046", w: 1800, h: 1200, t: "24.11.2025 · 08:34", alt: "A wet market seen from above, one person pulling a cart past the stalls" },
-        { id: "3269", w: 1800, h: 1200, t: "24.11.2025 · 18:55", alt: "A cook's hands lifting noodles beside bowls of wonton soup" },
+        { id: "3061", w: 1800, h: 1200, t: "24.11.2025 · 09:55", alt: "A fruit stall under hanging lamps, oranges stacked in front" },
       ],
       [
-        { id: "3586", w: 1800, h: 1200, t: "25.11.2025 · 14:28", alt: "The white upper deck of a ferry with a life ring, blue water behind" },
+        { id: "3075", w: 1800, h: 1200, t: "24.11.2025 · 10:05", alt: "A red taxi and passers-by framed by a doorway" },
+        { id: "3098", w: 1800, h: 1200, t: "24.11.2025 · 10:13", alt: "A red taxi in motion, the street blurred behind it" },
+      ],
+      [
+        { id: "3144", w: 1200, h: 1800, t: "24.11.2025 · 10:25", alt: "A double-decker tram seen from a footbridge" },
+        { id: "3269", w: 1800, h: 1200, t: "24.11.2025 · 18:55", alt: "A cook's hands lifting noodles beside bowls of wonton soup" },
+        { id: "3229", w: 1200, h: 1800, t: "24.11.2025 · 14:35", alt: "People crossing a street into low sun between towers" },
+      ],
+      [
         { id: "3465", w: 1800, h: 1200, t: "25.11.2025 · 10:19", alt: "A white building behind a tree across an empty forecourt" },
+        { id: "3495", w: 1800, h: 1200, t: "25.11.2025 · 10:41", alt: "A pale blue double-decker tram passing a block of flats" },
       ],
       [
         { id: "3612", w: 1200, h: 1800, t: "25.11.2025 · 14:35", alt: "A glass tower seen through a ferry porthole" },
-        { id: "2968", w: 1800, h: 1200, t: "23.11.2025 · 16:41", alt: "The shadow of a pine cast on a wall in low afternoon light" },
+        { id: "3586", w: 1800, h: 1200, t: "25.11.2025 · 14:28", alt: "The white upper deck of a ferry with a life ring, blue water behind" },
         { id: "3640", w: 1200, h: 1800, t: "25.11.2025 · 14:47", alt: "A lone walker on a walkway curving between white walls" },
       ],
     ],
@@ -96,22 +104,25 @@ export const days: Series[] = [
         { id: "3720", w: 1800, h: 1200, t: "26.11.2025 · 15:21", alt: "A pylon and power lines against a bright sky, seen from a train" },
       ],
       [
-        { id: "4259", w: 1200, h: 1800, t: "27.11.2025 · 09:43", alt: "The sun behind utility poles over a quiet crossing" },
+        { id: "3733", w: 1800, h: 1200, t: "26.11.2025 · 15:28", alt: "A three-storey house in late sun, seen from a train" },
         { id: "3751", w: 1800, h: 1200, t: "26.11.2025 · 16:48", alt: "Cyclists passing a convenience store at a crossing" },
-        { id: "4538", w: 1200, h: 1800, t: "27.11.2025 · 13:11", alt: "Power lines converging over a street that runs toward wooded hills" },
       ],
       [
+        { id: "4259", w: 1200, h: 1800, t: "27.11.2025 · 09:43", alt: "The sun behind utility poles over a quiet crossing" },
         { id: "4514", w: 1800, h: 1200, t: "27.11.2025 · 11:30", alt: "A bicycle wheel resting on fallen maple leaves" },
-        { id: "4792", w: 1800, h: 1200, t: "27.11.2025 · 16:50", alt: "A shop front glowing at dusk on a wet street, a passer-by blurred in front" },
       ],
       [
         { id: "4517", w: 1200, h: 1800, t: "27.11.2025 · 12:38", alt: "A man looking at his phone in the doorway of a train, the platform bright behind him" },
         { id: "4516", w: 1800, h: 1200, t: "27.11.2025 · 12:10", alt: "Passengers waiting under a platform sign for Kyoto" },
-        { id: "4541", w: 1200, h: 1800, t: "27.11.2025 · 13:23", alt: "A white kei van parked under a pine beside a red maple" },
+        { id: "4538", w: 1200, h: 1800, t: "27.11.2025 · 13:11", alt: "Power lines converging over a street that runs toward wooded hills" },
       ],
       [
-        { id: "4884", w: 1800, h: 1200, t: "27.11.2025 · 17:50", alt: "A tea bowl on a black tray on tatami" },
+        { id: "4541", w: 1200, h: 1800, t: "27.11.2025 · 13:23", alt: "A white kei van parked under a pine beside a red maple" },
         { id: "4558", w: 1800, h: 1200, t: "27.11.2025 · 14:44", alt: "A long tatami room with windows onto autumn trees" },
+      ],
+      [
+        { id: "4792", w: 1800, h: 1200, t: "27.11.2025 · 16:50", alt: "A shop front glowing at dusk on a wet street, a passer-by blurred in front" },
+        { id: "4884", w: 1800, h: 1200, t: "27.11.2025 · 17:50", alt: "A tea bowl on a black tray on tatami" },
       ],
       [
         { id: "5403", w: 1800, h: 1200, t: "29.11.2025 · 09:24", alt: "A cyclist waiting at a junction under a flyover" },
@@ -135,14 +146,17 @@ export const days: Series[] = [
       [
         { id: "4140", w: 1200, h: 1800, t: "26.11.2025 · 21:48", alt: "A worker moving crates outside a convenience store at night" },
         { id: "4126", w: 1800, h: 1200, t: "26.11.2025 · 21:33", alt: "A black taxi parked under the lights of a hotel entrance" },
-        { id: "5245", w: 1200, h: 1800, t: "28.11.2025 · 17:39", alt: "A school-crossing sign on a pole beside a red maple at night" },
       ],
       [
         { id: "4159", w: 1800, h: 1200, t: "26.11.2025 · 21:52", alt: "A cook at work behind a lit kitchen window hung with paper lanterns" },
         { id: "4174", w: 1800, h: 1200, t: "26.11.2025 · 21:58", alt: "A 24-hour laundromat seen through its window at night" },
       ],
       [
+        { id: "4194", w: 1800, h: 1200, t: "26.11.2025 · 22:08", alt: "The front of a small restaurant at night, cooks visible through the windows" },
         { id: "4208", w: 1800, h: 1200, t: "26.11.2025 · 22:15", alt: "Parked bicycles and their shadows under warm light" },
+      ],
+      [
+        { id: "5245", w: 1200, h: 1800, t: "28.11.2025 · 17:39", alt: "A school-crossing sign on a pole beside a red maple at night" },
         { id: "5252", w: 1800, h: 1200, t: "28.11.2025 · 17:54", alt: "A green train waiting at an empty platform at night" },
       ],
       [
@@ -212,21 +226,24 @@ export const days: Series[] = [
       [
         { id: "5631", w: 1200, h: 1800, t: "29.11.2025 · 23:09", alt: "A narrow alley with red walls and hanging shrine lanterns" },
         { id: "5680", w: 1800, h: 1200, t: "29.11.2025 · 23:27", alt: "Bicycles parked in a service passage under fluorescent light" },
-        { id: "5745", w: 1200, h: 1800, t: "30.11.2025 · 00:02", alt: "A fluorescent tube lighting a narrow alley" },
       ],
       [
         { id: "5705", w: 1200, h: 1800, t: "29.11.2025 · 23:45", alt: "A pink building lit at night beyond dark walls" },
-        { id: "5760", w: 1800, h: 1200, t: "30.11.2025 · 10:03", alt: "Patches of low sun on a lattice door and a stone wall" },
+        { id: "5745", w: 1200, h: 1800, t: "30.11.2025 · 00:02", alt: "A fluorescent tube lighting a narrow alley" },
         { id: "5753", w: 1200, h: 1800, t: "30.11.2025 · 00:04", alt: "Air-conditioning units and ducts on a brick wall" },
       ],
       [
-        { id: "5939", w: 1200, h: 1800, t: "01.12.2025 · 09:37", alt: "A woman crouching to greet a small black dog on a park path" },
+        { id: "5760", w: 1800, h: 1200, t: "30.11.2025 · 10:03", alt: "Patches of low sun on a lattice door and a stone wall" },
         { id: "5768", w: 1800, h: 1200, t: "30.11.2025 · 10:10", alt: "A man crossing a paved walk in low morning sun, long shadows" },
+      ],
+      [
+        { id: "5939", w: 1200, h: 1800, t: "01.12.2025 · 09:37", alt: "A woman crouching to greet a small black dog on a park path" },
+        { id: "5986", w: 1800, h: 1200, t: "01.12.2025 · 09:46", alt: "An older woman pushing a cart over fallen ginkgo leaves" },
         { id: "5963", w: 1200, h: 1800, t: "01.12.2025 · 09:42", alt: "A cyclist passing a row of yellow ginkgo trees" },
       ],
       [
-        { id: "5986", w: 1800, h: 1200, t: "01.12.2025 · 09:46", alt: "An older woman pushing a cart over fallen ginkgo leaves" },
         { id: "5993", w: 1800, h: 1200, t: "01.12.2025 · 09:47", alt: "The photographer's shadow on fallen ginkgo leaves at the foot of a tree" },
+        { id: "6062", w: 1800, h: 1200, t: "01.12.2025 · 10:02", alt: "A bicycle parked on a pavement scattered with fallen leaves" },
       ],
       [
         { id: "6070", w: 1200, h: 1800, t: "01.12.2025 · 10:03", alt: "Two heads in silhouette under the sun between towers" },
@@ -254,8 +271,8 @@ export const days: Series[] = [
         { id: "7965", w: 1200, h: 1800, t: "08.08.2026 · 18:17", alt: "A hiker from behind, rim-lit by the sun through the trees" },
       ],
       [
-        { id: "8033", w: 1200, h: 1800, t: "08.08.2026 · 19:12", alt: "A person sitting on a ledge above a blue lake" },
         { id: "7987", w: 1800, h: 1200, t: "08.08.2026 · 18:43", alt: "A hiker in silhouette looking over a valley at dusk" },
+        { id: "8033", w: 1200, h: 1800, t: "08.08.2026 · 19:12", alt: "A person sitting on a ledge above a blue lake" },
       ],
       [
         { id: "8130", w: 1800, h: 1200, t: "09.08.2026 · 12:52", alt: "Feet and railing shadows on a ferry deck" },
